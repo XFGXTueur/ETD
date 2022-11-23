@@ -3,7 +3,9 @@ import React, { useState } from "react";
 import Item from "./Item";
 
 const Devis = () => {
+
     const [noOfRows, setNoOfRows] = useState(1);
+    
     return (
         <div className="devis">
             <div className="devis__container">
@@ -11,7 +13,7 @@ const Devis = () => {
                 <div className="devis__container-first-block">
                     <a href="/" className="devis__container-first-block-link" alt="home">
                         <img 
-                            className="devis__container-first-block-img" 
+                            className="devis__container-first-block-link-img" 
                             alt="logo" 
                             src="./logo512.png"
                         ></img>
@@ -100,7 +102,7 @@ const Devis = () => {
                             </td>
                         </thead>
                         <tbody className="devis__container-fourth-block-table-body">
-                           {[...Array(noOfRows)].map((elementInArray, index) => {
+                        {[...Array(noOfRows)].map((elementInArray, index) => {
                                 return (
                                     <Item />
                                 );
@@ -131,25 +133,19 @@ const Devis = () => {
                                 <p className="devis__container-fourthBIS-block-table-head-tva-text">
                                     TVA
                                 </p>
-                                <p className="devis__container-fourthBIS-block-table-head-tva-value">
-                                    
-                                </p>
+                                <input className="devis__container-fourthBIS-block-table-head-tva-value" type="text"/>
                             </td>
                             <td className="devis__container-fourthBIS-block-table-head-totalDF">
                                 <p className="devis__container-fourthBIS-block-table-head-totalDF-text">
                                     Total HT
                                 </p>
-                                <p className="devis__container-fourthBIS-block-table-head-totalDF-value">
-
-                                </p>
+                                <input className="devis__container-fourthBIS-block-table-head-totalDF-value" type="text"/>
                             </td>
                             <td className="devis__container-fourthBIS-block-table-head-total">
                                 <p className="devis__container-fourthBIS-block-table-head-total-text">
                                     Total
                                 </p>
-                                <p className="devis__container-fourthBIS-block-table-head-total-value">
-                                    
-                                </p>
+                                <input className="devis__container-fourthBIS-block-table-head-total-value" type="text"/>
                             </td>
                         </thead>
                     </table>
@@ -174,7 +170,7 @@ const Devis = () => {
                     </div>
                     <div className="devis__container-sixth-block-sign">
                         <p className="devis__container-sixth-block-sign-client">
-                            Ma signature
+                            Ma signature :
                         </p>
                     </div>
                 </div>
@@ -193,6 +189,7 @@ const Devis = () => {
                         734820078
                     </p>
                 </div>
+                
             </div>
         </div>
     );

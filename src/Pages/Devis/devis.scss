@@ -7,50 +7,50 @@
         padding: 60px;
         margin: 0 auto 0 auto;
         border: solid 2px transparentize($color: $white, $amount: 0.3);
-        &-btn{
-            position: absolute;
-            &-link{
-                width: auto;
-            }
-        }
         &-first-block{
             display: flex;
-            &-img{
-                width: 200px;
+
+            &-link{
+                display: block;
+                width: 150px;
+                &-img{
+                    margin-left: 45%;
+                    width: 150px;
+                }
             }
             &-infos{
                 background-color: $light-gray;
-                width: 610px;
-                height: 165px;
-                margin-left: 150px;
+                width: 625px;
+                height: 130px;
+                margin-left: 180px;
                  &-devis{
-                    margin: 5.5%;
+                    margin: 4% 5% 5% 5%;
                     &-text{
                         display: inline-block;
                         width: auto;
                         color: $white;
-                        font-size: 25px;
+                        font-size: 20px;
                     }
                     &-input{
                         display: inline-block;
                         @include input-style;
-                        font-size: 25px;
+                        font-size: 20px;
                         margin-left: 10%;
                         width: 70%;
                     }
                 }
                 &-date{
-                    margin: 5.5%;
+                    margin: 5%;
                     &-text{
                         display: inline-block;
                         width: auto;
                         color: $white;
-                        font-size: 25px;
+                        font-size: 20px;
                     }
                     &-input{
                         display: inline-block;
                         @include input-style;
-                        font-size: 25px;
+                        font-size: 20px;
                         margin-left: 30%;
                         &[type="date"]::-webkit-inner-spin-button,
                         &[type="date"]::-webkit-calendar-picker-indicator {
@@ -68,7 +68,7 @@
         }
         &-second-block{            
             display: flex;
-            margin-top: 65px;
+            margin-top: 30px;
             &-me{
                 background-color: $light-gray;
                 width: 300px;
@@ -81,9 +81,9 @@
             }
             &-client{
                 background-color: $light-gray;
-                width: 610px;
+                width: 625px;
                 height: 165px;
-                margin-left: 50px;
+                margin-left: 30px;
                 &-input{
                     &-name{
                         display: block;
@@ -108,7 +108,7 @@
             display: flex;
             background-color: $light-gray;
             height: 70px;
-            margin-top: 70px;
+            margin-top: 30px;
             justify-content: center;
             &-title{
                 display: inline-block;
@@ -132,7 +132,7 @@
         &-fourth-block{
             background-color: $light-gray;
             min-height: 160px;
-            margin-top: 50px;
+            margin-top: 30px;
             &-table{
                 width: 100%;
                 padding: 12px;
@@ -263,10 +263,10 @@
         }
         &-addButton{
             width: 45%;
-            height: 30px;
+            height: 20px;
             margin-left: 37px;
             margin-right: 20px;
-            margin-top: 25px;
+            margin-top: 15px;
             margin-bottom: -5px;
             background-color: transparent;
             color: transparent;
@@ -289,7 +289,7 @@
         }
         &-delButton{
             width: 45%;
-            height: 30px;
+            height: 20px;
             margin-bottom: -5px;
             background-color: transparent;
             color: transparent;
@@ -312,44 +312,59 @@
         }
         &-fourthBIS-block{
             background-color: $light-gray;
-            height: 100px;
-            margin-top: 30px;
+            height: 80px;
+            margin-top: 15px;
+            text-align: center;
             &-table{
+                display: flex;
+                padding: 5px;
+                height: 65px;
                 &-head{
+                    margin-left: 49%;
                     &-tva{
                         width: auto;
+                        border-right: solid 2px transparentize($color: $black, $amount: 0.70);
+                        background-color: transparentize($color: $white, $amount: 0.90);
                         &-text{
                             width: auto;
                             color: $white;
                         }
                         &-value{
                             @include input-style;
+                            height: 40px;
                         }
                     }
                     &-totalDF{
                         width: auto;
+                        border-right: solid 2px transparentize($color: $black, $amount: 0.70);
+                        background-color: transparentize($color: $white, $amount: 0.90);
                         &-text{
                             width: auto;
                             color: $white;
                         }
                         &-value{
                             @include input-style;
+                            height: 40px;
                         }
                     }
                     &-total{
                         width: auto;
+                        border-right: solid 2px transparent;
+                        background-color: transparentize($color: $white, $amount: 0.90);
                         &-text{
                             width: auto;
                             color: $white;
                         }
                         &-value{
                             @include input-style;
+                            height: 40px;
                         }
                     }
                 }
             }
         }
         &-fifth-block{
+            display: flex;
             &-title{
                 width: auto;
                 color: $white;
@@ -360,17 +375,25 @@
             }
         }
         &-sixth-block{
+            display: flex;
+            height: 80px;
+            margin-bottom: 20px;
             &-sign{
-                width: auto;
+                width: 230px;
+                background-color: transparentize($color: $white, $amount: 0.90);
                 &-img{
                     width: auto;
                     color: $white;
                 }
             }
             &-sign{
+                margin-left: 17%;
+                background-color: transparentize($color: $white, $amount: 0.90);
                 &-client{
                     width: auto;
                     color: $white;
+                    margin-left: 5%;
+                    margin-top: 5%;
                 }
                 
             }
@@ -378,6 +401,7 @@
         }
         &-seventh-block{
             text-align: center;
+            margin-bottom: -40px;
             &-info{
                 width: auto;
                 &-status{
