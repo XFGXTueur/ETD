@@ -1,0 +1,32 @@
+@mixin input-style {
+    border: none;
+    background-color: transparent;
+    color: $white;
+    font-family: Nunito Sans;
+    &:hover{
+        background-color: transparentize($color: $white, $amount: 0.3);
+        color: $gray;
+    }
+    &:focus{
+        background-color: transparentize($color: $white, $amount: 0.3);
+        color: $gray;
+    }
+} 
+@mixin input-style-table {
+    max-width: 154.94px;
+    min-width: 154.94px;
+    min-height: 35px;
+    height: auto;
+    border: none;
+    background-color: transparent;
+    color: $white;
+    font-family: Nunito Sans;
+    &:hover{
+        background-color: transparentize($color: $white, $amount: 0.3);
+        color: $gray;
+    }
+    &:focus{
+        background-color: transparentize($color: $white, $amount: 0.3);
+        color: $gray;
+    }
+} 
