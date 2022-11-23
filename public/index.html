@@ -9,12 +9,17 @@
       name="description"
       content="Web site created using create-react-app"
     />
+    <link rel="stylesheet" href="style.css" /> <!-- Import du style -->
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <title>React App</title>
+    <title>ETD App</title>
   </head>
   <body>
+
+    <!-- Le rendu se fera ici, dans root -->
     <div id="root"></div>
+
+    <!-- Création du service-worker pour être considérée comme une PWA -->
     <script>
       if ("serviceWorker" in navigator) {
         navigator.serviceWorker
