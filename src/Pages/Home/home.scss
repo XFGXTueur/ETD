@@ -1,5 +1,50 @@
 .home{
+  animation: fadeIn 1.5s ease-in-out;
     &__container{
+        display: flex;
         width: auto;
+        height: 100vh;
+        &-img{
+          width: 10vw;
+          position: absolute;
+          margin-top: 7vw;
+          margin-left: 45vw;
+        }
+        &-btn{
+          width: 20%;
+          height: 10vw;
+          margin-top: 22.5%;
+          background-color: $gray;
+          border: solid 2px $black;
+          border-radius: 10px;
+          transition: all 0.2s ease-in-out;
+          margin-left: 20vw;
+          box-shadow: 0 0 12px $light-gray;
+          &:hover{
+            box-shadow: -5px 2.5px 10px $white;
+            transform: translateX(5px);
+            transform: translateY(-2.5px);
+          }
+          &:active{
+            box-shadow: 0 0 6px $black;
+            transform: translateX(0px);
+            transform: translateY(0px);
+          }
+          &-link{
+            display: block;
+            height: 100%;
+            width: 100%;
+            text-decoration: none;
+            color: $white;
+            text-align: center;
+            font-family: 'magma-wave';
+            font-size: 2vw;
+            padding-top: 3.5vw;
+            border-radius: 10px;
+            &:hover{
+              color: $white;
+            }
+          }
+        }
     }
 }
