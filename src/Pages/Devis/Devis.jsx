@@ -104,7 +104,7 @@ const Devis = () => {
                         <tbody className="devis__container-fourth-block-table-body">
                         {[...Array(noOfRows)].map((elementInArray, index) => {
                                 return (
-                                    <Item />
+                                    <Item key={13}/>
                                 );
                             })}
                         </tbody>
@@ -113,14 +113,14 @@ const Devis = () => {
                 </div>
                 <button 
                         type="button" 
-                        class="devis__container-addButton" 
+                        className="devis__container-addButton" 
                         onClick={() => setNoOfRows(noOfRows + 1)}
                     >
                         Add
                     </button>
                     <button 
                         type="button" 
-                        class="devis__container-delButton" 
+                        className="devis__container-delButton" 
                         onClick={() => setNoOfRows(noOfRows - 1)}
                     >
                         Delete
