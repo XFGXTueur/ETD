@@ -3,9 +3,9 @@ import React from "react";
 const Item = () => {
     return (
         <>
-            <tr className="devis__container-fourth-block-table-body-line">
-                <td className="devis__container-fourth-block-table-body-line-description">
-                    <textarea className="devis__container-fourth-block-table-body-line-description-input"></textarea>
+            <tr className="devis__container-fourth-block-table-body-line" key={0} >
+                <td className="devis__container-fourth-block-table-body-line-description" key={1}>
+                    <textarea className="devis__container-fourth-block-table-body-line-description-input" key={2}></textarea>
                 </td>
                 <td className="devis__container-fourth-block-table-body-line-qty">
                     <input className="devis__container-fourth-block-table-body-line-qty-input" type="number" />

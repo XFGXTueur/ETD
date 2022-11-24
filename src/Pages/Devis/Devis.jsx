@@ -129,7 +129,7 @@ const Devis = () => {
                         <tbody className="devis__container-fourth-block-table-body">
                         {[...Array(noOfRows)].map((elementInArray, index) => {
                                 return (
-                                    <Item />
+                                    <Item key={13}/>
                                 );
                             })}
                         </tbody>
