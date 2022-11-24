@@ -15,19 +15,18 @@
           height: 10vw;
           margin-top: 22.5%;
           background-color: $gray;
-          border: solid 2px $black;
           border-radius: 10px;
-          transition: all 0.2s ease-in-out;
+          transition: all 0.1s ease-in-out;
           margin-left: 20vw;
-          box-shadow: 0 0 12px $light-gray;
+          border: solid 1px $light-gray;
           &:hover{
-            box-shadow: -5px 2.5px 10px $white;
-            transform: translateX(5px);
-            transform: translateY(-2.5px);
+            box-shadow: 0 0 12px $light-gray;
+            transform: translateY(-1.5px);
           }
           &:active{
             box-shadow: 0 0 6px $black;
-            transform: translateX(0px);
+            border: solid 1px $black;
+
             transform: translateY(0px);
           }
           &-link{
@@ -38,11 +37,16 @@
             color: $white;
             text-align: center;
             font-family: 'magma-wave';
-            font-size: 2vw;
+            font-size: 1.5vw;
             padding-top: 3.5vw;
             border-radius: 10px;
             &:hover{
               color: $white;
+            }
+            &-bis{
+              font-family: Averia Sans Libre;
+              font-weight: bold;
+              margin-left: 1px;
             }
           }
         }

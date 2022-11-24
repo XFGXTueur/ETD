@@ -1,35 +1,60 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import { useReactToPrint } from "react-to-print";
 
 import Item from "./Item";
 
 const Devis = () => {
 
     const [noOfRows, setNoOfRows] = useState(1);
-    
+    const componentRef = useRef();
+    const handlePrint = useReactToPrint({
+        content: () => componentRef.current,
+    });
+
     return (
         <div className="devis">
-            <div className="devis__container">
+            <button
+                onClick={handlePrint}
+                className="devis__print-button"
+            >
+                Print
+            </button>
+            <button
+                type="button"
+                class="devis__addButton"
+                onClick={() => setNoOfRows(noOfRows + 1)}
+            >
+                Add
+            </button>
+            <button
+                type="button"
+                class="devis__delButton"
+                onClick={() => setNoOfRows(noOfRows - 1)}
+            >
+                Delete
+            </button>
+            <div className="devis__container" ref={componentRef}>
                 {/*  Premier Bloc  */}
                 <div className="devis__container-first-block">
                     <a href="/" className="devis__container-first-block-link" alt="home">
-                        <img 
-                            className="devis__container-first-block-link-img" 
-                            alt="logo" 
+                        <img
+                            className="devis__container-first-block-link-img"
+                            alt="logo"
                             src="./logo512.png"
                         ></img>
-                    </a> 
+                    </a>
 
                     <div className="devis__container-first-block-infos">
                         <div className="devis__container-first-block-infos-devis">
                             <p className="devis__container-first-block-infos-devis-text">DEVIS :</p>
-                            <input 
+                            <input
                                 className="devis__container-first-block-infos-devis-input"
-                                type="text" 
+                                type="text"
                             />
                         </div>
                         <div className="devis__container-first-block-infos-date">
                             <p className="devis__container-first-block-infos-date-text">Date :</p>
-                            <input 
+                            <input
                                 className="devis__container-first-block-infos-date-input"
                                 type="date"
                             />
@@ -43,7 +68,7 @@ const Devis = () => {
                             Ma Boite
                         </p>
                         <p className="devis__container-second-block-me-text">
-                            Adresse, 0 rue Nom 
+                            Adresse, 0 rue Nom
                         </p>
                         <p className="devis__container-second-block-me-text">
                             Ma Ville
@@ -59,12 +84,12 @@ const Devis = () => {
                         </p>
                     </div>
                     <div className="devis__container-second-block-client">
-                        <input 
-                            className="devis__container-second-block-client-input-name" 
+                        <input
+                            className="devis__container-second-block-client-input-name"
                             type="text"
                         />
-                        <textarea 
-                            className="devis__container-second-block-client-input-address" 
+                        <textarea
+                            className="devis__container-second-block-client-input-address"
                         ></textarea>
                     </div>
                 </div>
@@ -73,7 +98,7 @@ const Devis = () => {
                     <p className="devis__container-third-block-title">
                         Devis
                     </p>
-                    <textarea 
+                    <textarea
                         className="devis__container-third-block-input"
                         type="text"
                     ></textarea>
@@ -85,17 +110,17 @@ const Devis = () => {
                             <td className="devis__container-fourth-block-table-head-description">
                                 Description
                             </td>
-                            <td className="devis__container-fourth-block-table-head-unit">
-                                Unité
-                            </td>
                             <td className="devis__container-fourth-block-table-head-qty">
                                 Quantité
+                            </td>
+                            <td className="devis__container-fourth-block-table-head-unit">
+                                Unité
                             </td>
                             <td className="devis__container-fourth-block-table-head-unitPrice">
                                 Prix unitaire
                             </td>
                             <td className="devis__container-fourth-block-table-head-totalDF">
-                                Total HT
+                                TVA
                             </td>
                             <td className="devis__container-fourth-block-table-head-total">
                                 Total
@@ -109,43 +134,28 @@ const Devis = () => {
                             })}
                         </tbody>
                     </table>
-                    
                 </div>
-                <button 
-                        type="button" 
-                        class="devis__container-addButton" 
-                        onClick={() => setNoOfRows(noOfRows + 1)}
-                    >
-                        Add
-                    </button>
-                    <button 
-                        type="button" 
-                        class="devis__container-delButton" 
-                        onClick={() => setNoOfRows(noOfRows - 1)}
-                    >
-                        Delete
-                    </button>
                 {/*  Quatrieme Bloc BIS */}
                 <div className="devis__container-fourthBIS-block">
                     <table className="devis__container-fourthBIS-block-table">
                         <thead className="devis__container-fourthBIS-block-table-head">
                             <td className="devis__container-fourthBIS-block-table-head-tva">
                                 <p className="devis__container-fourthBIS-block-table-head-tva-text">
-                                    TVA
+                                    Total TVA
                                 </p>
-                                <input className="devis__container-fourthBIS-block-table-head-tva-value" type="text"/>
+                                <input className="devis__container-fourthBIS-block-table-head-tva-value" type="text" readonly="readonly"/>
                             </td>
                             <td className="devis__container-fourthBIS-block-table-head-totalDF">
                                 <p className="devis__container-fourthBIS-block-table-head-totalDF-text">
                                     Total HT
                                 </p>
-                                <input className="devis__container-fourthBIS-block-table-head-totalDF-value" type="text"/>
+                                <input className="devis__container-fourthBIS-block-table-head-totalDF-value" type="number" readonly="readonly"/>
                             </td>
                             <td className="devis__container-fourthBIS-block-table-head-total">
                                 <p className="devis__container-fourthBIS-block-table-head-total-text">
                                     Total
                                 </p>
-                                <input className="devis__container-fourthBIS-block-table-head-total-value" type="text"/>
+                                <input className="devis__container-fourthBIS-block-table-head-total-value" type="number" readonly="readonly"/>
                             </td>
                         </thead>
                     </table>
@@ -162,8 +172,8 @@ const Devis = () => {
                 {/*  Sixieme Bloc  */}
                 <div className="devis__container-sixth-block">
                     <div className="devis__container-sixth-block-sign">
-                        <img 
-                            className="devis__container-sixth-block-sign-img" 
+                        <img
+                            className="devis__container-sixth-block-sign-img"
                             alt="signature"
                             href=""
                         ></img>
@@ -189,7 +199,6 @@ const Devis = () => {
                         734820078
                     </p>
                 </div>
-                
             </div>
         </div>
     );

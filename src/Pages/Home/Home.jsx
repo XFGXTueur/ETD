@@ -6,10 +6,10 @@ const Home = () => {
             <div className="home__container">
                 <img className="home__container-img" src="./logo192.png" alt="logo"></img>
                 <div className="home__container-btn">
-                    <a href="/devis" className="home__container-btn-link" alt="devis">Devis</a>
+                    <a href="/devis" className="home__container-btn-link" alt="devis">D<span className="home__container-btn-link-bis">evis</span></a>
                 </div>
                 <div className="home__container-btn">
-                    <a href="/factures" className="home__container-btn-link" alt="factures">Factures</a>
+                    <a href="/factures" className="home__container-btn-link" alt="factures">F<span className="home__container-btn-link-bis">actures</span></a>
                 </div>
             </div>
         </div>
