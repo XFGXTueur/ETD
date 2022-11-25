@@ -146,19 +146,19 @@ const Devis = () => {
                                 <p className="devis__container-fourthBIS-block-table-head-tva-text">
                                     Total TVA
                                 </p>
-                                <input className="devis__container-fourthBIS-block-table-head-tva-value" type="text" readonly="readonly"/>
+                                <input className="devis__container-fourthBIS-block-table-head-tva-value" type="text" readOnly="readonly"/>
                             </td>
                             <td className="devis__container-fourthBIS-block-table-head-totalDF">
                                 <p className="devis__container-fourthBIS-block-table-head-totalDF-text">
                                     Total HT
                                 </p>
-                                <input className="devis__container-fourthBIS-block-table-head-totalDF-value" type="number" readonly="readonly"/>
+                                <input className="devis__container-fourthBIS-block-table-head-totalDF-value" type="number" readOnly="readonly"/>
                             </td>
                             <td className="devis__container-fourthBIS-block-table-head-total">
                                 <p className="devis__container-fourthBIS-block-table-head-total-text">
                                     Total
                                 </p>
-                                <input className="devis__container-fourthBIS-block-table-head-total-value" type="number" readonly="readonly"/>
+                                <input className="devis__container-fourthBIS-block-table-head-total-value" type="number" readOnly="readonly"/>
                             </td>
                         </thead>
                     </table>
