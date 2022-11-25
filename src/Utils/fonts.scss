@@ -1,3 +1,4 @@
+// fonts locales
 @font-face{
     font-family: 'gothic';
     src: local("gothic"),
@@ -13,5 +14,11 @@
     src: local("magma-wave"),
         url(../fonts/magma-wave.woff) format('woff');
 }
+//
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Averia+Sans+Libre&display=swap');
+
+$h1: 32px;
+$h2: 20px;
+$h3: 18px;
+$p: 16px;
