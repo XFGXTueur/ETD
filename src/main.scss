@@ -1,9 +1,9 @@
 // Import des scss des composants
-@import './Loader/loader.scss';
 @import './Utils/fonts.scss';
 @import './Utils/colors.scss';
 @import './Utils/animations.scss';
 @import './Utils/variables.scss';
+@import './Loader/loader.scss';
 
 // Import des scss des pages
 @import './Pages/Home/home.scss';
@@ -20,9 +20,9 @@
 }
 
 html,
-body {
-    position: absolute;
+body {    
     background-color: $gray;
+    position: absolute;
     overflow: visible;
     overflow-y: overlay;
     width: 100%;

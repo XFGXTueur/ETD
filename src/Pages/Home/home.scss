@@ -1,5 +1,6 @@
 .home{
   animation: fadeIn 1.5s ease-in-out;
+  background-color: $gray;
     &__container{
         display: flex;
         width: auto;

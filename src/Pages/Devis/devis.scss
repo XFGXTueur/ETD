@@ -1,4 +1,12 @@
+
+@media print {
+    body{
+        background-color: white;
+    }
+}
 .devis{
+    background-color: $gray;
+    padding: 30px 0 30px 0;
     &__print-button{
         position: absolute;
         z-index: 0;
@@ -6,10 +14,10 @@
         height: 50px;
         margin-top: 460px;
         margin-left: 50px;
-        background-color: $blue;
+        background-color: $blue; 
         color: $black;
         font-weight: bold;
-        border: none;
+        border: none; 
         font-size: large;
         border-radius: 10px;
         transition: all 0.1s ease-in-out;
@@ -75,410 +83,426 @@
         font-family: 'Nunito Sans';
         display: block;
         max-width: 1080px;
-        height: 96.25vh;
+        height: 1520px;
         padding: 60px;
-        margin: 30px auto 30px auto;
+        margin: auto;
         border: solid 2px transparentize($color: $white, $amount: 0.3);
-        &-first-block{
-            display: flex;
-
-            &-link{
-                display: block;
+        &-link{
+            display: block;
+            position: absolute;
+            width: 150px;
+            &-img{
+                margin-left: 45%;
                 width: 150px;
-                &-img{
-                    margin-left: 45%;
-                    width: 150px;
-                }
             }
-            &-infos{
-                background-color: $light-gray;
-                width: 625px;
-                height: 130px;
-                margin-left: 180px;
-                 &-devis{
-                    margin: 4% 5% 5% 5%;
-                    &-text{
-                        display: inline-block;
-                        width: auto;
-                        color: $white;
-                        font-size: 20px;
+        }
+        &-section{
+            &-first-block{
+                display: flex;
+                &-infos{
+                    background-color: $light-gray;
+                    width: 625px;
+                    height: 130px;
+                    margin-left: 330px;
+                     &-devis{
+                        margin: 4% 5% 5% 5%;
+                        &-text{
+                            display: inline-block;
+                            width: auto;
+                            color: $white;
+                            font-size: 20px;
+                        }
+                        &-input{
+                            display: inline-block;
+                            @include input-style;
+                            font-size: 20px;
+                            margin-left: 10%;
+                            width: 70%;
+                        }
                     }
-                    &-input{
-                        display: inline-block;
-                        @include input-style;
-                        font-size: 20px;
-                        margin-left: 10%;
-                        width: 70%;
-                    }
-                }
-                &-date{
-                    margin: 5%;
-                    &-text{
-                        display: inline-block;
-                        width: auto;
-                        color: $white;
-                        font-size: 20px;
-                    }
-                    &-input{
-                        display: inline-block;
-                        @include input-style;
-                        font-size: 20px;
-                        margin-left: 30%;
-                        &[type="date"]::-webkit-inner-spin-button,
-                        &[type="date"]::-webkit-calendar-picker-indicator {
-                            opacity: 0;
-                            cursor: help;
-                            &:hover{
-                                opacity: 1;
+                    &-date{
+                        margin: 5%;
+                        &-text{
+                            display: inline-block;
+                            width: auto;
+                            color: $white;
+                            font-size: 20px;
+                        }
+                        &-input{
+                            display: inline-block;
+                            @include input-style;
+                            font-size: 20px;
+                            margin-left: 30%;
+                            &[type="date"]::-webkit-inner-spin-button,
+                            &[type="date"]::-webkit-calendar-picker-indicator {
+                                opacity: 0;
+                                cursor: help;
+                                &:hover{
+                                    opacity: 1;
+                                }
                             }
                         }
                     }
+                    
                 }
                 
             }
-            
-        }
-        &-second-block{            
-            display: flex;
-            margin-top: 30px;
-            &-me{
+            &-second-block{            
+                display: flex;
+                margin-top: 30px;
+                &-me{
+                    background-color: $light-gray;
+                    width: 300px;
+                    height: 165px;
+                    padding: 15px 0 0 25px;
+                    &-text{
+                        width: auto;
+                        color: $white;
+                    }
+                }
+                &-client{
+                    background-color: $light-gray;
+                    width: 625px;
+                    height: 165px;
+                    margin-left: 30px;
+                    &-input{
+                        &-name{
+                            display: block;
+                            margin: 15px;
+                            width: 95%;
+                            height: 30px;
+                            @include input-style;
+                            padding-left: 10px;
+                        }
+                        &-address{
+                            display: block;
+                            @include input-style;
+                            margin: 15px;
+                            max-height: 100px;
+                            min-width: 580px;
+                            max-width: 580px;
+                        }
+                    }
+                    
+                }
+                
+            }
+            &-third-block{
+                display: flex;
                 background-color: $light-gray;
-                width: 300px;
-                height: 165px;
-                padding: 15px 0 0 25px;
-                &-text{
+                height: 70px;
+                margin-top: 30px;
+                justify-content: center;
+                &-title{
+                    display: inline-block;
+                    padding-top: 13.5px;
                     width: auto;
                     color: $white;
+                    font-size: 32px;
                 }
-            }
-            &-client{
-                background-color: $light-gray;
-                width: 625px;
-                height: 165px;
-                margin-left: 30px;
                 &-input{
-                    &-name{
-                        display: block;
-                        margin: 15px;
-                        width: 95%;
-                        height: 30px;
-                        @include input-style;
-                        padding-left: 10px;
-                    }
-                    &-address{
-                        display: block;
-                        @include input-style;
-                        margin: 15px;
-                        max-height: 100px;
-                        min-width: 580px;
-                        max-width: 580px;
-                    }
+                    min-height: 70px;
+                    max-height: 70px;
+                    width: 1px;
+                    min-width: 10px;
+                    display: inline-block;
+                    margin-left: 30px;
+                    font-size: 32px;
+                    padding-top: 14px;
+                    @include input-style;
                 }
-                
             }
-            
-        }
-        &-third-block{
-            display: flex;
-            background-color: $light-gray;
-            height: 70px;
-            margin-top: 30px;
-            justify-content: center;
-            &-title{
-                display: inline-block;
-                padding-top: 13.5px;
-                width: auto;
-                color: $white;
-                font-size: 32px;
-            }
-            &-input{
-                min-height: 70px;
-                max-height: 70px;
-                width: 1px;
-                min-width: 10px;
-                display: inline-block;
-                margin-left: 30px;
-                font-size: 32px;
-                padding-top: 14px;
-                @include input-style;
-            }
-        }
-        &-fourth-block{
-            background-color: $light-gray;
-            min-height: 160px;
-            margin-top: 30px;
-            &-table{
-                width: 100%;
-                padding: 12px;
-                &-head{
-                    display: flex;
-                    text-align: center;
-                    background-color: transparentize($color: $white, $amount: 0.90);
-                    height: 50px;
-                    line-height: 3;
-                    &-description{
-                        display: block;
-                        width: 100%;
-                        color: $white;
-                        border-right: solid 2px transparentize($color: $black, $amount: 0.70);
-                    }
-                    &-unit{
-                        display: block;
-                        width: 100%;
-                        color: $white;
-                        border-right: solid 2px transparentize($color: $black, $amount: 0.70);
-                    }
-                    &-qty{
-                        display: block;
-                        width: 100%;
-                        color: $white;
-                        border-right: solid 2px transparentize($color: $black, $amount: 0.70);
-                    }
-                    &-unitPrice{
-                        display: block;
-                        width: 100%;
-                        color: $white;
-                        border-right: solid 2px transparentize($color: $black, $amount: 0.70);
-                    }
-                    &-tva{
-                        display: block;
-                        width: 100%;
-                        color: $white;
-                        border-right: solid 2px transparentize($color: $black, $amount: 0.70);
-                    }
-                    &-total-tva{
-                        display: block;
-                        width: 100%;
-                        color: $white;
-                        border-right: solid 2px transparentize($color: $black, $amount: 0.70);
-                    }
-                    &-total{
-                        display: block;
-                        width: 100%;
-                        color: $white;
-                        border-right: solid 2px transparent;
-                    }
-                }
-                &-body{
-                    &-line{
+            &-fourth-block{
+                background-color: $light-gray;
+                min-height: 160px;
+                margin-top: 30px;
+                &-table{
+                    width: 100%;
+                    padding: 12px;
+                    &-head{
                         display: flex;
-                        &:nth-of-type(odd){
-                            background-color: rgba(0,0,0,.1);
-                        }
+                        text-align: center;
+                        background-color: transparentize($color: $white, $amount: 0.90);
+                        height: 50px;
+                        line-height: 3;
                         &-description{
                             display: block;
                             width: 100%;
-                            &-input{
-                                @include input-style-table;
-                                padding-top: 10%;
-                                display: block;
-                                text-align: center;
-                                border-right: solid 2px transparentize($color: $black, $amount: 0.70);
-                            }
+                            color: $white;
+                            border-right: solid 2px transparentize($color: $black, $amount: 0.70);
                         }
                         &-unit{
                             display: block;
                             width: 100%;
-                            &-input{
-                                @include input-style-table;
-                                display: block;
-                                overflow-y: hidden;
-                                height: 100%;
-                                text-align: center;
-                                border-right: solid 2px transparentize($color: $black, $amount: 0.70);
-                            }
+                            color: $white;
+                            border-right: solid 2px transparentize($color: $black, $amount: 0.70);
                         }
                         &-qty{
                             display: block;
                             width: 100%;
-                            &-input{
-                                @include input-style-table;
-                                display: block;
-                                overflow-y: hidden;
-                                height: 100%;
-                                text-align: center;
-                                border-right: solid 2px transparentize($color: $black, $amount: 0.70);
-                            }
+                            color: $white;
+                            border-right: solid 2px transparentize($color: $black, $amount: 0.70);
                         }
                         &-unitPrice{
                             display: block;
                             width: 100%;
-                            &-input{
-                                @include input-style-table;
-                                display: block;
-                                overflow-y: hidden;
-                                height: 100%;
-                                text-align: center;
-                                border-right: solid 2px transparentize($color: $black, $amount: 0.70);
-                            }
+                            color: $white;
+                            border-right: solid 2px transparentize($color: $black, $amount: 0.70);
                         }
                         &-tva{
+                            display: block;
                             width: 100%;
+                            color: $white;
+                            border-right: solid 2px transparentize($color: $black, $amount: 0.70);
+                        }
+                        &-total-tva{
+                            display: block;
+                            width: 100%;
+                            color: $white;
+                            border-right: solid 2px transparentize($color: $black, $amount: 0.70);
+                        }
+                        &-total{
+                            display: block;
+                            width: 100%;
+                            color: $white;
+                            border-right: solid 2px transparent;
+                        }
+                    }
+                    &-body{
+                        &-line{
+                            display: flex;
+                            &:nth-of-type(odd){
+                                background-color: rgba(0,0,0,.1);
+                            }
+                            &-description{
+                                display: block;
+                                width: 100%;
+                                &-input{
+                                    @include input-style-table;
+                                    padding-top: 10%;
+                                    display: block;
+                                    text-align: center;
+                                    border-right: solid 2px transparentize($color: $black, $amount: 0.70);
+                                }
+                            }
+                            &-unit{
+                                display: block;
+                                width: 100%;
+                                &-input{
+                                    @include input-style-table;
+                                    display: block;
+                                    overflow-y: hidden;
+                                    height: 100%;
+                                    text-align: center;
+                                    border-right: solid 2px transparentize($color: $black, $amount: 0.70);
+                                }
+                            }
+                            &-qty{
+                                display: block;
+                                width: 100%;
+                                &-input{
+                                    @include input-style-table;
+                                    display: block;
+                                    overflow-y: hidden;
+                                    height: 100%;
+                                    text-align: center;
+                                    border-right: solid 2px transparentize($color: $black, $amount: 0.70);
+                                }
+                            }
+                            &-unitPrice{
+                                display: block;
+                                width: 100%;
+                                &-input{
+                                    @include input-style-table;
+                                    display: block;
+                                    overflow-y: hidden;
+                                    height: 100%;
+                                    text-align: center;
+                                    border-right: solid 2px transparentize($color: $black, $amount: 0.70);
+                                }
+                            }
+                            &-tva{
+                                width: 100%;
+                                &-text{
+                                    width: auto;
+                                    color: $white;
+                                }
+                                &-value{
+                                    @include input-style-table;
+                                    display: block;
+                                    overflow-y: hidden;
+                                    height: 100%;
+                                    text-align: center;
+                                    -moz-appearance:none;
+                                    -webkit-appearance:none;
+                                    appearance:none;
+                                    border-right: solid 2px transparentize($color: $black, $amount: 0.70);
+                                }
+                            }
+                            &-total-tva{
+                                display: block;
+                                width: 100%;
+                                &-input{ 
+                                    @include input-style-table;
+                                    display: block;
+                                    overflow-y: hidden;
+                                    height: 100%;
+                                    text-align: center;
+                                    border-right: solid 2px transparentize($color: $black, $amount: 0.70);
+                                }
+                            }
+                            &-total{
+                                display: block;
+                                width: auto;
+                                &-input{ 
+                                    @include input-style-table;
+                                    display: block;
+                                    overflow-y: hidden;
+                                    height: 100%;
+                                    text-align: center;
+                                    border-right: solid 2px transparent;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            &-fourthBIS-block{
+                background-color: $light-gray;
+                height: 80px;
+                margin-top: 15px;
+                text-align: center;
+                &-table{
+                    display: flex;
+                    padding: 5px;
+                    height: 65px;
+                    &-head{
+                        margin-left: 49%;
+                        &-totalDF{
+                            width: auto;
+                            border-right: solid 2px transparentize($color: $black, $amount: 0.70);
+                            background-color: transparentize($color: $white, $amount: 0.90);
                             &-text{
                                 width: auto;
                                 color: $white;
                             }
                             &-value{
-                                @include input-style-table;
-                                display: block;
-                                overflow-y: hidden;
-                                height: 100%;
-                                text-align: center;
-                                -moz-appearance:none;
-                                -webkit-appearance:none;
-                                appearance:none;
-                                border-right: solid 2px transparentize($color: $black, $amount: 0.70);
-                            }
-                        }
-                        &-total-tva{
-                            display: block;
-                            width: 100%;
-                            &-input{ 
-                                @include input-style-table;
-                                display: block;
-                                overflow-y: hidden;
-                                height: 100%;
-                                text-align: center;
-                                border-right: solid 2px transparentize($color: $black, $amount: 0.70);
+                                @include input-style;
+                                height: 40px;
                             }
                         }
                         &-total{
-                            display: block;
                             width: auto;
-                            &-input{ 
-                                @include input-style-table;
-                                display: block;
-                                overflow-y: hidden;
-                                height: 100%;
+                            border-right: solid 2px transparent;
+                            background-color: transparentize($color: $white, $amount: 0.90);
+                            &-text{
+                                width: auto;
+                                color: $white;
+                            }
+                            &-value{
+                                @include input-style;
+                                height: 40px;
+                            }
+                        }
+                        &-tva{
+                            width: auto;
+                            border-right: solid 2px transparentize($color: $black, $amount: 0.70);
+                            background-color: transparentize($color: $white, $amount: 0.90);
+                            &-text{
+                                width: auto;
+                                color: $white;
+                            }
+                            &-value{
+                                @include input-style;
+                                height: 40px;
+                                width: 153px;
                                 text-align: center;
-                                border-right: solid 2px transparent;
+                                padding-left: 6.5px;
                             }
                         }
                     }
                 }
             }
-        }
-        &-fourthBIS-block{
-            background-color: $light-gray;
-            height: 80px;
-            margin-top: 15px;
-            text-align: center;
-            &-table{
+            &-fifth-block{
+                background-color: $light-gray;
+                margin-top: 25px;
+                height: 200px;
+                width: 956px;
+                text-align: center;
+                &-title{
+                    padding-top: 15px;
+                    width: auto;
+                    display: block;
+                    color: $white;
+                }
+                &-cgv{
+                    margin-top: 8px;
+                    width: auto;
+                    display: block;
+                    color: $white;
+                }
+            }
+            &-sixth-block{
                 display: flex;
-                padding: 5px;
-                height: 65px;
-                &-head{
-                    margin-left: 49%;
-                    &-totalDF{
-                        width: auto;
-                        border-right: solid 2px transparentize($color: $black, $amount: 0.70);
-                        background-color: transparentize($color: $white, $amount: 0.90);
-                        &-text{
-                            width: auto;
-                            color: $white;
-                        }
-                        &-value{
-                            @include input-style;
-                            height: 40px;
-                        }
+                bottom: 95px;
+                margin-top: 25px;
+                margin-bottom: 20px;
+                :nth-child(2){
+                    margin-left: 170px !important;
+                }
+                &-sign{
+                    display: block;
+                    width: 300px;
+                    height: 130px;
+                    margin-left: 93px;
+                    background-color: transparentize($color: $white, $amount: 0.90);
+                    &-img{
+                        margin-top: 15px;
+                        margin-left: 20px;
+                        color: $white;
                     }
-                    &-total{
-                        width: auto;
-                        border-right: solid 2px transparent;
-                        background-color: transparentize($color: $white, $amount: 0.90);
-                        &-text{
-                            width: auto;
-                            color: $white;
-                        }
-                        &-value{
-                            @include input-style;
-                            height: 40px;
-                        }
-                    }
-                    &-tva{
-                        width: auto;
-                        border-right: solid 2px transparentize($color: $black, $amount: 0.70);
-                        background-color: transparentize($color: $white, $amount: 0.90);
-                        &-text{
-                            width: auto;
-                            color: $white;
-                        }
-                        &-value{
-                            @include input-style;
-                            height: 40px;
-                            width: 153px;
-                            text-align: center;
-                            padding-left: 6.5px;
-                        }
+                    &-client{
+                        margin-top: 15px;
+                        margin-left: 20px;
+                        color: $white;
                     }
                 }
             }
-        }
-        &-fifth-block{
-            text-align: center;
-            &-title{
-                width: auto;
-                display: block;
-                color: $white;
-            }
-            &-cgv{
-                width: auto;
-                display: block;
-                color: $white;
-            }
-        }
-        &-sixth-block{
-            display: flex;
-            height: 80px;
-            margin-bottom: 20px;
-            &-sign{
-                width: 230px;
-                background-color: transparentize($color: $white, $amount: 0.90);
-                &-img{
-                    width: auto;
-                    color: $white;
-                }
-            }
-            &-sign{
-                margin-left: 17%;
-                background-color: transparentize($color: $white, $amount: 0.90);
-                &-client{
-                    width: auto;
-                    color: $white;
-                    margin-left: 5%;
-                    margin-top: 5%;
-                }
-                
-            }
-            
-        }
-        &-seventh-block{
-            text-align: center;
-            margin-bottom: -40px;
-            &-info{
-                width: auto;
-                &-status{
+            &-seventh-block{
+                background-color: $light-gray;
+                height: 35px;
+                width: 956px;
+                text-align: center;
+                margin-top: 30px;
+                margin-bottom: 15px;
+                line-height: 36px;
+                &-info-status{
                     display: inline-block;
                     width: auto;
+                    height: 100%;
                     color: $white;
-                    margin-left: 50px;
+                    font-size: 16px;
                 }
-                &-name{
+                &-info-name{
                     display: inline-block;
                     width: auto;
+                    height: 100%;
                     color: $white;
-                    margin-left: 100px;
+                    margin-left: 150px;
                 }
-                &-bce{
+                &-info-bce{
                     display: inline-block;
                     width: auto;
+                    height: 100%;
                     color: $white;
-                    margin-left: 100px;
+                    margin-left: 150px;
                 }
-                &-tva{
+                &-info-tva{
                     display: inline-block;
                     width: auto;
-                    color: $white;margin-left: 100px;
+                    height: 100%;
+                    color: $white;
+                    margin-left: 150px;
                 }
             }
         }
