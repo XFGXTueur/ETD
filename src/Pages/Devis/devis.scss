@@ -75,9 +75,9 @@
         font-family: 'Nunito Sans';
         display: block;
         max-width: 1080px;
-        height: 1580px;
+        height: 96.25vh;
         padding: 60px;
-        margin: 0 auto 0 auto;
+        margin: 30px auto 30px auto;
         border: solid 2px transparentize($color: $white, $amount: 0.3);
         &-first-block{
             display: flex;
@@ -267,7 +267,7 @@
                         }
                         &-description{
                             display: block;
-                            width: auto;
+                            width: 100%;
                             &-input{
                                 @include input-style-table;
                                 padding-top: 10%;
@@ -278,7 +278,7 @@
                         }
                         &-unit{
                             display: block;
-                            width: auto;
+                            width: 100%;
                             &-input{
                                 @include input-style-table;
                                 display: block;
@@ -290,7 +290,7 @@
                         }
                         &-qty{
                             display: block;
-                            width: auto;
+                            width: 100%;
                             &-input{
                                 @include input-style-table;
                                 display: block;
@@ -302,7 +302,7 @@
                         }
                         &-unitPrice{
                             display: block;
-                            width: auto;
+                            width: 100%;
                             &-input{
                                 @include input-style-table;
                                 display: block;
@@ -313,33 +313,33 @@
                             }
                         }
                         &-tva{
-                            width: auto;
-                            border-right: solid 2px transparentize($color: $black, $amount: 0.70);
+                            width: 100%;
                             &-text{
                                 width: auto;
                                 color: $white;
                             }
                             &-value{
                                 @include input-style-table;
+                                display: block;
+                                overflow-y: hidden;
                                 height: 100%;
-                                width: auto;
                                 text-align: center;
-                                padding-left: 6.5px;
                                 -moz-appearance:none;
                                 -webkit-appearance:none;
                                 appearance:none;
+                                border-right: solid 2px transparentize($color: $black, $amount: 0.70);
                             }
                         }
                         &-total-tva{
                             display: block;
-                            width: auto;
-                            border-right: solid 2px transparentize($color: $black, $amount: 0.70);
+                            width: 100%;
                             &-input{ 
                                 @include input-style-table;
                                 display: block;
                                 overflow-y: hidden;
                                 height: 100%;
                                 text-align: center;
+                                border-right: solid 2px transparentize($color: $black, $amount: 0.70);
                             }
                         }
                         &-total{
@@ -415,13 +415,15 @@
             }
         }
         &-fifth-block{
-            display: flex;
+            text-align: center;
             &-title{
                 width: auto;
+                display: block;
                 color: $white;
             }
             &-cgv{
                 width: auto;
+                display: block;
                 color: $white;
             }
         }
