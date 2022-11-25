@@ -19,7 +19,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "sass": "sass --watch  ./src/main.scss:./public/style.css --style compressed"
+    "sass": "sass --watch  ./src/main.scss:./public/style.css --style compressed",
+    "sass-print": "sass --watch  ./src/main-print.scss:./public/print-style.css --style compressed"
   },
   "eslintConfig": {
     "extends": [

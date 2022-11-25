@@ -85,7 +85,7 @@
         max-width: 1080px;
         height: 1520px;
         padding: 60px;
-        margin: auto;
+        margin: 30px auto auto auto;
         border: solid 2px transparentize($color: $white, $amount: 0.3);
         &-link{
             display: block;
