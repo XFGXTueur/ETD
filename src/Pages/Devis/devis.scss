@@ -1,12 +1,6 @@
-
-@media print {
-    body{
-        background-color: white;
-    }
-}
 .devis{
     background-color: $gray;
-    padding: 30px 0 30px 0;
+    padding: 30px 0 30px 0; //margin: haut droite bas gauche;
     &__print-button{
         position: absolute;
         z-index: 0;
@@ -104,34 +98,38 @@
                     width: 625px;
                     height: 130px;
                     margin-left: 330px;
-                     &-devis{
-                        margin: 4% 5% 5% 5%;
+                    &-devis{
+                        margin: 2.5% 5% 2% 5%;
                         &-text{
                             display: inline-block;
                             width: auto;
                             color: $white;
-                            font-size: 20px;
+                            font-size: $h2;
                         }
                         &-input{
                             display: inline-block;
                             @include input-style;
-                            font-size: 20px;
+                            font-size: $h2;
                             margin-left: 10%;
                             width: 70%;
                         }
                     }
                     &-date{
-                        margin: 5%;
+                        width: 90%;
+                        margin: -5px 0 0 5%;
+                        padding-bottom: 1%;
+                        border-bottom: solid 2px transparentize($color: $black, $amount: 0.70);
                         &-text{
                             display: inline-block;
                             width: auto;
                             color: $white;
-                            font-size: 20px;
+                            font-size: $h3;
+                            margin-left: 1px;
                         }
                         &-input{
                             display: inline-block;
                             @include input-style;
-                            font-size: 20px;
+                            font-size: $h3;
                             margin-left: 30%;
                             &[type="date"]::-webkit-inner-spin-button,
                             &[type="date"]::-webkit-calendar-picker-indicator {
@@ -143,14 +141,40 @@
                             }
                         }
                     }
-                    
+                    &-dateL{
+                        width: 90%;
+                        margin: 1% 0 0 5%;
+                        &-text{
+                            display: inline-block;
+                            width: auto;
+                            color: $white;
+                            font-size: $h3;
+                            margin-left: 1px;
+                        }
+                        &-input{
+                            display: inline-block;
+                            @include input-style;
+                            font-size: $h3;
+                            margin-left: 21.2%;
+                            &[type="date"]::-webkit-inner-spin-button,
+                            &[type="date"]::-webkit-calendar-picker-indicator {
+                                opacity: 0;
+                                cursor: help;
+                                &:hover{
+                                    opacity: 1;
+                                }
+                            }
+                        }
+                    }
                 }
-                
             }
-            &-second-block{            
+            &-second-block{
                 display: flex;
                 margin-top: 30px;
                 &-me{
+                    :nth-child(1){
+                    font-size: $h3 !important;
+                    }
                     background-color: $light-gray;
                     width: 300px;
                     height: 165px;
@@ -165,27 +189,26 @@
                     width: 625px;
                     height: 165px;
                     margin-left: 30px;
-                    &-input{
-                        &-name{
-                            display: block;
-                            margin: 15px;
-                            width: 95%;
-                            height: 30px;
-                            @include input-style;
-                            padding-left: 10px;
-                        }
-                        &-address{
-                            display: block;
-                            @include input-style;
-                            margin: 15px;
-                            max-height: 100px;
-                            min-width: 580px;
-                            max-width: 580px;
-                        }
+                    &-input-name{
+                        display: block;
+                        margin: 15px;
+                        width: 95%;
+                        height: 30px;
+                        @include input-style;
+                        font-size: $h3;
+                        padding-left: 10px;
                     }
-                    
+                    &-input-address{
+                        display: block;
+                        @include input-style;
+                        margin: 15px;
+                        padding-left: 10px;
+                        font-size: $p;
+                        max-height: 100px;
+                        min-width: 580px;
+                        max-width: 580px;
+                    }
                 }
-                
             }
             &-third-block{
                 display: flex;
@@ -198,7 +221,7 @@
                     padding-top: 13.5px;
                     width: auto;
                     color: $white;
-                    font-size: 32px;
+                    font-size: $h1;
                 }
                 &-input{
                     min-height: 70px;
@@ -206,8 +229,8 @@
                     width: 1px;
                     min-width: 10px;
                     display: inline-block;
-                    margin-left: 30px;
-                    font-size: 32px;
+                    margin-left: 10px;
+                    font-size: $h1;
                     padding-top: 14px;
                     @include input-style;
                 }
@@ -385,6 +408,7 @@
                             &-text{
                                 width: auto;
                                 color: $white;
+                                margin-top: 5px;
                             }
                             &-value{
                                 @include input-style;
@@ -397,6 +421,7 @@
                             background-color: transparentize($color: $white, $amount: 0.90);
                             &-text{
                                 width: auto;
+                                margin-top: 5px;
                                 color: $white;
                             }
                             &-value{
@@ -410,6 +435,7 @@
                             background-color: transparentize($color: $white, $amount: 0.90);
                             &-text{
                                 width: auto;
+                                margin-top: 5px;
                                 color: $white;
                             }
                             &-value{
@@ -424,26 +450,36 @@
                 }
             }
             &-fifth-block{
+                display: flex;
+                position: absolute;
+                bottom: 280px;
                 background-color: $light-gray;
                 margin-top: 25px;
-                height: 200px;
+                height: 220px;
                 width: 956px;
-                text-align: center;
+                flex-direction: column;
                 &-title{
-                    padding-top: 15px;
+                    text-align: center;
+                    padding-top: 20px;
                     width: auto;
-                    display: block;
                     color: $white;
+                    font-size: $h2;
                 }
                 &-cgv{
-                    margin-top: 8px;
+                    text-transform: lowercase;
+                    margin-left: 45px;
                     width: auto;
-                    display: block;
                     color: $white;
+                    font-size: $p;
+                    line-height: 1.8;
+                    &:nth-child(1){
+                        margin-top: 10px;
+                    }
                 }
             }
             &-sixth-block{
                 display: flex;
+                position: absolute;
                 bottom: 95px;
                 margin-top: 25px;
                 margin-bottom: 20px;
@@ -470,6 +506,8 @@
             }
             &-seventh-block{
                 background-color: $light-gray;
+                position: absolute;
+                bottom: 30px;
                 height: 35px;
                 width: 956px;
                 text-align: center;
@@ -481,7 +519,7 @@
                     width: auto;
                     height: 100%;
                     color: $white;
-                    font-size: 16px;
+                    font-size: $p;
                 }
                 &-info-name{
                     display: inline-block;

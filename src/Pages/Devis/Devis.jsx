@@ -61,6 +61,13 @@ const Devis = () => {
                                     type="date"
                                 />
                             </div>
+                            <div className="devis__container-section-first-block-infos-dateL">
+                                <p className="devis__container-section-first-block-infos-dateL-text">Date limite :</p>
+                                <input
+                                    className="devis__container-section-first-block-infos-dateL-input"
+                                    type="date"
+                                />
+                            </div>
                         </div>
                     </div>
                     {/*  Second Bloc  */}
@@ -168,11 +175,25 @@ const Devis = () => {
                     {/*  Cinquieme Bloc  */}
                     <div className="devis__container-section-fifth-block">
                         <p className="devis__container-section-fifth-block-title">
-                            TITRE CGV
+                            CONDITIONS GENERALES DE VENTE
                         </p>
-                        <p className="devis__container-section-fifth-block-cgv">
-                            CGV
-                        </p>
+                        <ol>
+                            <li className="devis__container-section-fifth-block-cgv">
+                                LES MODALITÉS DE PAIEMENT, LES MODALITÉS DE PAIEMENT, LES MODALITÉS DE PAIEMENT, LES MODALITÉS DE PAIEMENT, 
+                            </li>
+                            <li className="devis__container-section-fifth-block-cgv">
+                                CLAUSE SUR LES INTÉRÊTS DE RETARD,
+                            </li>
+                            <li className="devis__container-section-fifth-block-cgv">
+                                CLAUSE PÉNALE,
+                            </li>
+                            <li className="devis__container-section-fifth-block-cgv">
+                                CLAUSE DE RÉSERVE DE PROPRIÉTÉ,
+                            </li>
+                            <li className="devis__container-section-fifth-block-cgv">
+                                CLAUSE PORTANT SUR LE DÉLAI DE RÉTRACTATION,
+                            </li>
+                        </ol>
                     </div>
                     {/*  Sixieme Bloc  */}
                     <div className="devis__container-section-sixth-block">
