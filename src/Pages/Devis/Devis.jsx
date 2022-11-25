@@ -21,14 +21,14 @@ const Devis = () => {
             </button>
             <button
                 type="button"
-                class="devis__addButton"
+                className="devis__addButton"
                 onClick={() => setNoOfRows(noOfRows + 1)}
             >
                 Add
             </button>
             <button
                 type="button"
-                class="devis__delButton"
+                className="devis__delButton"
                 onClick={() => setNoOfRows(noOfRows - 1)}
             >
                 Delete
@@ -119,8 +119,11 @@ const Devis = () => {
                             <td className="devis__container-fourth-block-table-head-unitPrice">
                                 Prix unitaire
                             </td>
-                            <td className="devis__container-fourth-block-table-head-totalDF">
-                                TVA
+                            <td className="devis__container-fourth-block-table-head-tva">
+                                % TVA
+                            </td>
+                            <td className="devis__container-fourth-block-table-head-total-tva">
+                                Total TVA
                             </td>
                             <td className="devis__container-fourth-block-table-head-total">
                                 Total
@@ -129,7 +132,7 @@ const Devis = () => {
                         <tbody className="devis__container-fourth-block-table-body">
                         {[...Array(noOfRows)].map((elementInArray, index) => {
                                 return (
-                                    <Item key={13}/>
+                                    <Item key={16}/>
                                 );
                             })}
                         </tbody>
