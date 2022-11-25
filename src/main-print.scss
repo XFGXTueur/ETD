@@ -1,0 +1,47 @@
+@media print{
+    // Import des scss des composants
+    @import './Utils/fonts.scss';
+    @import './Utils/print-colors.scss';
+    @import './Utils/animations.scss';
+    @import './Utils/variables.scss';
+    @import './Loader/loader.scss';
+
+    // Import des scss des pages
+    @import './Pages/Home/home.scss';
+    @import './Pages/Devis/devis.scss';
+    @import './Pages/Factures/factures.scss';
+
+
+    // Application du style par défaut
+    *{
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        outline: none;
+    }
+
+    html,
+    body {    
+        background-color: $gray;
+        position: absolute;
+        overflow: visible;
+        overflow-y: overlay;
+        width: 100%;
+        z-index: -1;
+        margin: 0;
+        // Ajout du style de la barre de navigation
+        ::-webkit-scrollbar {
+            position: absolute;
+            width: 10px;
+            &-track {
+                margin-top: 100px;
+            }
+            &-thumb {
+                background: $gray;
+                &:hover {
+                    background: $light-gray;
+                }
+            }
+        }
+    }
+}
