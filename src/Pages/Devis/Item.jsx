@@ -1,4 +1,7 @@
 import React from "react";
+import FR from '../../locales/fr/translation.json';
+
+const t = FR;
 
 const Item = () => {
     return (
@@ -19,10 +22,10 @@ const Item = () => {
                 <td className="devis__container-section-fourth-block-table-body-line-tva" key={9}>
                     <p className="devis__container-section-fourth-block-table-body-line-tva-text" type="number" readOnly="readonly" key={10}/>
                     <select className="devis__container-section-fourth-block-table-body-line-tva-value" name="tva" id="tva" key={11}>
-                            <option value="0">0%</option>
-                            <option value="6">6%</option>
-                            <option value="12">12%</option>
-                            <option value="21">21%</option>
+                            <option value={t.devis_page.table.line.tva.value.one}>{t.devis_page.table.line.tva.value.one}{t.devis_page.table.line.tva.unit}</option>
+                            <option value={t.devis_page.table.line.tva.value.two}>{t.devis_page.table.line.tva.value.two}{t.devis_page.table.line.tva.unit}</option>
+                            <option value={t.devis_page.table.line.tva.value.three}>{t.devis_page.table.line.tva.value.three}{t.devis_page.table.line.tva.unit}</option>
+                            <option value={t.devis_page.table.line.tva.value.four}>{t.devis_page.table.line.tva.value.four}{t.devis_page.table.line.tva.unit}</option>
                     </select>
                 </td>
                 <td className="devis__container-section-fourth-block-table-body-line-total-tva" key={12}>
