@@ -200,11 +200,16 @@ const Devis = () => {
                     {/*  Sixieme Bloc  */}
                     <div className="devis__container-section-sixth-block">
                         <div className="devis__container-section-sixth-block-sign">
-                            <img
-                                className="devis__container-section-sixth-block-sign-img"
-                                alt="signature"
-                                href=""
-                            ></img>
+                            <div className="devis__container-section-sixth-block-sign-me">
+                                <p className="devis__container-section-sixth-block-sign-me-text">
+                                    {t.devis_page.sign.me}
+                                </p>
+                                <img
+                                    className="devis__container-section-sixth-block-sign-me-img"
+                                    alt="signature"
+                                    href=""
+                                ></img>
+                            </div>
                         </div>
                         <div className="devis__container-section-sixth-block-sign">
                             <p className="devis__container-section-sixth-block-sign-client">
