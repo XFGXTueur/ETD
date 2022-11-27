@@ -1,4 +1,7 @@
 @media print{
+    @page{
+        size: A3;
+    }
     // Import des scss des composants
     @import './Utils/fonts.scss';
     @import './Utils/print-colors.scss';

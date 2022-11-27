@@ -1,33 +1,37 @@
 .home{
-  animation: fadeIn 1.5s ease-in-out;
+  animation: fadeIn 1s ease-in-out;
   background-color: $gray;
     &__container{
         display: flex;
         width: auto;
         height: 100vh;
+        vertical-align: middle;
+        align-items: center;
         &-img{
           width: 10vw;
           position: absolute;
-          margin-top: 7vw;
+          margin-top: -30%;
           margin-left: 45vw;
+          transition: transfrom 1s ease-in-out;
+          &:active{
+            animation: rotation 0.5s ease-in-out;
+          }
         }
         &-btn{
           width: 20%;
           height: 10vw;
-          margin-top: 22.5%;
           background-color: $gray;
           border-radius: 10px;
-          transition: all 0.1s ease-in-out;
+          transition: transform 0.1s ease-in-out, box-shadow 0.15s ease-in-out;
           margin-left: 20vw;
-          border: solid 1px $light-gray;
+          border: solid 1px transparentize($color: $light-gray, $amount: 0.5);
           &:hover{
             box-shadow: 0 0 12px $light-gray;
             transform: translateY(-1.5px);
           }
           &:active{
-            box-shadow: 0 0 6px $black;
+            box-shadow: inset 0 1px 8px $black;
             border: solid 1px $black;
-
             transform: translateY(0px);
           }
           &-link{
@@ -39,7 +43,7 @@
             text-align: center;
             font-family: 'magma-wave';
             font-size: 1.5vw;
-            padding-top: 3.5vw;
+            padding-top: 3.8vw;
             border-radius: 10px;
             &:hover{
               color: $white;
