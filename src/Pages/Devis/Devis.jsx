@@ -95,12 +95,9 @@ const Devis = () => {
                             </p>
                         </div>
                         <div className="devis__container-section-second-block-client">
-                            <input
-                                className="devis__container-section-second-block-client-input-name"
-                                type="text"
-                            />
                             <textarea
-                                className="devis__container-section-second-block-client-input-address"
+                                className="devis__container-section-second-block-client-input"
+                                wrap="off"
                             ></textarea>
                         </div>
                     </div>

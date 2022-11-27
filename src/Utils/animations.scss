@@ -7,7 +7,7 @@
     }
     100%{
         opacity: 0;
-    }
+    } 
 }
 
 @keyframes fadeIn{
@@ -16,5 +16,19 @@
     }
     100%{
         opacity: 1;
+    }
+}
+
+@keyframes rotation{
+    0%{
+        transform: rotate(0deg) scale(1, 1) translate(0, 0);
+    }
+    50%{
+        margin-bottom: 500px;
+        margin-left: 50px;
+        transform: rotate(360deg) scale(1.2, 1.2) translate(5px, 5px) translate3d(-25px, 50px, -25px);
+    }
+    100%{
+        transform: rotate(720deg) scale(1, 1) translate(0, 0);
     }
 }
