@@ -6,7 +6,6 @@
     align-items: center;
     justify-content: center;
     &-img{
-        z-index: 5;
         width: 350px;
         opacity: 0;
         animation: fadeInOut 1.5s ease-in-out;

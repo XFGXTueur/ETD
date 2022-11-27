@@ -15,7 +15,6 @@
           transition: transfrom 1s ease-in-out;
           &:active{
             animation: rotation 0.5s ease-in-out;
-
           }
         }
         &-btn{
@@ -57,8 +56,4 @@
           }
         }
     }
-}
-
-#switch:checked + img {
-  animation: rotation 1s ease-in-out;
 }
