@@ -103,13 +103,13 @@ const Devis = () => {
                     </div>
                     {/*  Troisieme Bloc  */}
                     <div className="devis__container-section-third-block">
-                        <p className="devis__container-section-third-block-title">
+                        <span
+                            className="devis__container-section-third-block-title"
+                            role="textbox"
+                            contentEditable
+                        >
                             {t.devis_page.title}
-                        </p>
-                        <textarea
-                            className="devis__container-section-third-block-input"
-                            type="text"
-                        ></textarea>
+                        </span>
                     </div>
                     {/*  Quatrieme Bloc  */}
                     <div className="devis__container-section-fourth-block">
