@@ -487,15 +487,23 @@
                     margin-left: 170px !important;
                 }
                 &-sign{
-                    display: block;
                     width: 300px;
                     height: 130px;
                     margin-left: 93px;
                     background-color: transparentize($color: $white, $amount: 0.90);
-                    &-img{
+                    :nth-child(2){
+                        margin-left: 0px !important;
+                    }
+                    &-me{
                         margin-top: 15px;
-                        margin-left: 20px;
-                        color: $white;
+                        &-text{
+                            margin-left: 20px;
+                            color: $white;
+                        }
+                        &-img{
+                            padding-left: -50px;
+                            color: $white;
+                        }
                     }
                     &-client{
                         margin-top: 15px;
