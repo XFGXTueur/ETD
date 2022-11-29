@@ -107,6 +107,7 @@ const Facture = () => {
                             className="facture__container-section-third-block-title"
                             role="textbox"
                             contentEditable
+                            suppressContentEditableWarning={true}
                         >
                             {t.facture_page.title}
                         </span>
