@@ -6,7 +6,7 @@ import Item from "./Item";
 
 const t = FR;
 
-const Factures = () => {
+const Facture = () => {
 
     const [noOfRows, setNoOfRows] = useState(1);
     const componentRef = useRef();
@@ -235,4 +235,4 @@ const Factures = () => {
     );
 }
 
-export default Factures;
+export default Facture;
