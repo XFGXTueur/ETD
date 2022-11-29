@@ -19,7 +19,7 @@ const Item = () => {
         setTva(e.target.value);
     }
 
-    const total = (quantity * price) * (1 + tva / 100).toFixed(2);
+    const total = ((quantity * price) * (1 + tva / 100)).toFixed(2);
     const totalDF = ((quantity * price) * (1 + tva / 100) - (quantity * price)).toFixed(2);
 
     return (
