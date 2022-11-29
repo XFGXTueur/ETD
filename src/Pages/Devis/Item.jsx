@@ -58,7 +58,8 @@ const Item = () => {
                         key={"tvaValue"}
                         onChange={handleTva}
                     >
-                            <option value={tva}>{t.devis_page.table.line.tva.value.one}{t.devis_page.table.line.tva.unit}</option>
+                            <option value={tva} selected disabled>{t.devis_page.table.line.tva.unit}</option>
+                            <option value={t.devis_page.table.line.tva.value.one}>{t.devis_page.table.line.tva.value.one}{t.devis_page.table.line.tva.unit}</option>
                             <option value={t.devis_page.table.line.tva.value.two}>{t.devis_page.table.line.tva.value.two}{t.devis_page.table.line.tva.unit}</option>
                             <option value={t.devis_page.table.line.tva.value.three}>{t.devis_page.table.line.tva.value.three}{t.devis_page.table.line.tva.unit}</option>
                             <option value={t.devis_page.table.line.tva.value.four}>{t.devis_page.table.line.tva.value.four}{t.devis_page.table.line.tva.unit}</option>
