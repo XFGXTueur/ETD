@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom"; // Ajout de la 
 import Loader from "./Loader/Loader";
 import Home from "./Pages/Home/Home";
 import Devis from "./Pages/Devis/Devis";
-import Factures from "./Pages/Factures/Factures";
+import Facture from "./Pages/Facture/Facture";
 
 const App = () => {
   // Création d'un état pour le loader
@@ -30,7 +30,7 @@ const App = () => {
               <Routes>
                   <Route path="/" element={ <Home/> } />
                   <Route path="/devis" element={ <Devis/> } />
-                  <Route path="/factures" element={ <Factures/> } />
+                  <Route path="/facture" element={ <Facture/> } />
               </Routes>
           </BrowserRouter>
       )}

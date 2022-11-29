@@ -107,6 +107,7 @@ const Devis = () => {
                             className="devis__container-section-third-block-title"
                             role="textbox"
                             contentEditable
+                            suppressContentEditableWarning={true}
                         >
                             {t.devis_page.title}
                         </span>

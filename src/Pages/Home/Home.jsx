@@ -26,9 +26,9 @@ const Home = () => {
                 </div>
                 <div className="home__container-btn">
                     <a
-                        href="/factures"
+                        href="/facture"
                         className="home__container-btn-link"
-                        alt="factures"
+                        alt="facture"
                     >
                         {t.home.factures.capital}
                         <span className="home__container-btn-link-bis">
