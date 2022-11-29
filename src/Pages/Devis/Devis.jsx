@@ -140,8 +140,12 @@ const Devis = () => {
                             </thead>
                             <tbody className="devis__container-section-fourth-block-table-body">
                             {[...Array(noOfRows)].map((elementInArray, index) => {
+                                const quantityLine = "quantity "+(index)+" :";
+                                const priceLine = "price "+(index)+" :";
+                                const tvaLine = "tva "+(index)+" :";
+
                                     return (
-                                        <Item key={16}/>
+                                        <Item key={index}/>
                                     );
                                 })}
                             </tbody>
