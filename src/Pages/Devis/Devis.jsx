@@ -2,15 +2,30 @@ import React, { useState, useRef, useEffect } from "react";
 import { useReactToPrint } from "react-to-print";
 import FR from '../../locales/fr/translation.json';
 
+
 const t = FR;
 
 const Devis = () => {
 
+    //To set the title of the page
+    const [title, setTitle] = useState("Devis");
+
+    useEffect(() => {
+        let devisNumber = document.getElementById("devisNumber").value;
+        document.title = title + " - " + devisNumber;
+    }, [title]);
+
+    const changeTitle = (event) => {
+        setTitle(event.target.value);
+    };
+
+    //To print the page
     const componentRef = useRef();
     const handlePrint = useReactToPrint({
         content: () => componentRef.current,
     });
 
+    //To save the data in local storage
     const [data, setData] = useState([]);
 
     useEffect(() => {
@@ -24,6 +39,7 @@ const Devis = () => {
         localStorage.setItem('data', JSON.stringify(data));
     }, [data]);
 
+    //To add a new row
     const addRow = () => {
         setData([...data, {
             id: data.length + 1,
@@ -85,6 +101,8 @@ const Devis = () => {
                                 <input
                                     className="devis__container-section-first-block-infos-devis-input"
                                     type="text"
+                                    id="devisNumber"
+                                    defaultValue=""
                                 />
                             </div>
                             <div className="devis__container-section-first-block-infos-date">
@@ -134,14 +152,12 @@ const Devis = () => {
                     </div>
                     {/*  Troisieme Bloc  */}
                     <div className="devis__container-section-third-block">
-                        <span
+                        <textarea
                             className="devis__container-section-third-block-title"
-                            role="textbox"
-                            contentEditable
-                            suppressContentEditableWarning={true}
-                        >
-                            {t.devis_page.title}
-                        </span>
+                            id="title"
+                            onChange={changeTitle}
+                            value={title}
+                        ></textarea>
                     </div>
                     {/*  Quatrieme Bloc  */}
                     <div className="devis__container-section-fourth-block">
