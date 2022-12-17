@@ -37,6 +37,7 @@
                         }
                         &-input{
                             display: inline-block;
+                            text-align: center;
                             @include input-style;
                             font-size: $h2;
                             margin-left: 10%;
@@ -140,17 +141,15 @@
                     width: auto;
                     color: $white;
                     font-size: $h1;
-                }
-                &-input{
+                    background-color: transparent;
+                    border: none;
+                    width: 100%;
+                    min-width: 100%;
                     min-height: 70px;
                     max-height: 70px;
-                    width: 1px;
-                    min-width: 10px;
-                    display: inline-block;
-                    margin-left: 10px;
-                    font-size: $h1;
-                    padding-top: 14px;
-                    @include input-style;
+                    text-align: center;
+                    color: $white;
+                    font-family: Nunito Sans;
                 }
             }
             &-fourth-block{
