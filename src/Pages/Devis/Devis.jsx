@@ -49,9 +49,10 @@ const Devis = () => {
         }
     }, [data]);
 
-    const deleteRow = (index) => {
+    //delete last row created
+    const deleteRow = () => {
         const newData = [...data];
-        newData.splice(index, 1);
+        newData.pop();
         setData(newData);
     };
 
