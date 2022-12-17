@@ -2,78 +2,6 @@
     animation: fadeIn 1s ease-in-out;
     background-color: $gray;
     padding: 30px 0 30px 0; //margin: haut droite bas gauche;
-    &__print-button{
-        position: absolute;
-        z-index: 0;
-        width: 8%;
-        height: 50px;
-        margin-top: 460px;
-        margin-left: 50px;
-        background-color: $blue;
-        color: $black;
-        font-weight: bold;
-        border: none;
-        font-size: large;
-        border-radius: 10px;
-        transition: all 0.1s ease-in-out;
-        cursor: url(printPDF.png), crosshair;
-        &:hover{
-            box-shadow: -1px 2.5px 2px $light-gray;
-            transform: translateY(-1.5px);
-        }
-        &:active{
-            box-shadow: 0 0 6px $black;
-            transform: translateY(0px);
-        }
-    }
-    &__addButton{
-        position: absolute;
-        z-index: 0;
-        width: 8%;
-        height: 50px;
-        margin-left: 50px;
-        margin-top: 620px;
-        background-color: $green;
-        color: white;
-        font-weight: bold;
-        border: none;
-        font-size: large;
-        border-radius: 10px;
-        transition: all 0.1s ease-in-out;
-        cursor: url(add_0.png), cell;
-        &:hover{
-            box-shadow: -1px 2.5px 2px $light-gray;
-            transform: translateY(-1.5px);
-        }
-        &:active{
-            box-shadow: 0 0 6px $black;
-            transform: translateY(0px);
-        }
-    }
-    &__delButton{
-        position: absolute;
-        z-index: 0;
-        width: 8%;
-        height: 50px;
-        margin-top: 540px;
-        margin-left: 50px;
-        background-color: $red;
-        color: $white;
-        font-weight: bold;
-        border: none;
-        font-size: large;
-        border-radius: 10px;
-        transition: all 0.1s ease-in-out;
-        cursor: url(delete_1.png), not-allowed;
-        &:hover{
-            box-shadow: -1px 2.5px 2px $light-gray;
-            transform: translateY(-1.5px);
-        }
-        &:active{
-            box-shadow: 0 0 6px $black;
-            transform: translateY(0px);
-        }
-    }
     &__container{
         font-family: 'Nunito Sans';
         display: block;
@@ -227,7 +155,7 @@
             }
             &-fourth-block{
                 background-color: $light-gray;
-                min-height: 160px;
+                min-height: 130px;
                 margin-top: 30px;
                 &-table{
                     width: 100%;
@@ -387,6 +315,7 @@
                 text-align: center;
                 &-table{
                     display: flex;
+                    margin-left: -58px;
                     padding: 5px;
                     height: 65px;
                     &-head{
@@ -401,6 +330,8 @@
                                 margin-top: 5px;
                             }
                             &-value{
+                                text-align: center;
+                                padding-left: 15px;
                                 @include input-style;
                                 height: 40px;
                             }
@@ -415,6 +346,8 @@
                                 color: $white;
                             }
                             &-value{
+                                text-align: center;
+                                padding-left: 15px;
                                 @include input-style;
                                 height: 40px;
                             }
@@ -433,7 +366,6 @@
                                 height: 40px;
                                 width: 153px;
                                 text-align: center;
-                                padding-left: 6.5px;
                             }
                         }
                     }

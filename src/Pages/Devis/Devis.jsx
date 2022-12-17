@@ -1,41 +1,71 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useReactToPrint } from "react-to-print";
 import FR from '../../locales/fr/translation.json';
-
-import Item from "./Item";
 
 const t = FR;
 
 const Devis = () => {
 
-    const [noOfRows, setNoOfRows] = useState(1);
     const componentRef = useRef();
     const handlePrint = useReactToPrint({
         content: () => componentRef.current,
     });
 
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        const storedData = localStorage.getItem('data');
+        if (storedData) {
+            setData(JSON.parse(storedData));
+        }
+    }, []);
+
+    useEffect(() => {
+        localStorage.setItem('data', JSON.stringify(data));
+    }, [data]);
+
+    const addRow = () => {
+        setData([...data, {
+            id: data.length + 1,
+            description: '',
+            quantity: '',
+            unit: '',
+            price: '',
+            tva: '',
+            totalDF: '',
+            total: ''
+        }]);
+    };
+
+    const updateRow = (index, key, value) => {
+        const newData = [...data];
+        newData[index][key] = value;
+        setData(newData);
+    };
+
+    useEffect(() => {
+        if (data.length === 0) {
+            addRow();
+        }
+    }, [data]);
+
+    const deleteRow = (index) => {
+        const newData = [...data];
+        newData.splice(index, 1);
+        setData(newData);
+    };
+
+    //make total of all 'total' values
+    const total = data.reduce((acc, item) => {
+        return acc + parseFloat(item.total);
+    }, 0);
+
+    const totalDF = data.reduce((acc, item) => {
+        return acc + parseFloat(item.totalDF);
+    }, 0);
+
     return (
         <div className="devis">
-            <button
-                onClick={handlePrint}
-                className="devis__print-button"
-            >
-                {t.ui.print}
-            </button>
-            <button
-                type="button"
-                className="devis__addButton"
-                onClick={() => setNoOfRows(noOfRows + 1)}
-            >
-                {t.ui.add}
-            </button>
-            <button
-                type="button"
-                className="devis__delButton"
-                onClick={() => setNoOfRows(noOfRows - 1)}
-            >
-                {t.ui.del}
-            </button>
             <div className="devis__container" ref={componentRef}>
                 {/*  Premier Bloc  */}
                 <a href="/" className="devis__container-link" alt="home">
@@ -116,62 +146,158 @@ const Devis = () => {
                     <div className="devis__container-section-fourth-block">
                         <table className="devis__container-section-fourth-block-table">
                             <thead className="devis__container-section-fourth-block-table-head">
-                                <td className="devis__container-section-fourth-block-table-head-description">
-                                    {t.devis_page.table.head.description}
-                                </td>
-                                <td className="devis__container-section-fourth-block-table-head-qty">
-                                    {t.devis_page.table.head.quantity}
-                                </td>
-                                <td className="devis__container-section-fourth-block-table-head-unit">
-                                    {t.devis_page.table.head.unit}
-                                </td>
-                                <td className="devis__container-section-fourth-block-table-head-unitPrice">
-                                    {t.devis_page.table.head.unit_price}
-                                </td>
-                                <td className="devis__container-section-fourth-block-table-head-tva">
-                                    {t.devis_page.table.head.total.tva}
-                                </td>
-                                <td className="devis__container-section-fourth-block-table-head-total-tva">
-                                    {t.devis_page.table.head.total.ttva}
-                                </td>
-                                <td className="devis__container-section-fourth-block-table-head-total">
-                                    {t.devis_page.table.head.total.total}
-                                </td>
+                            <td className="devis__container-section-fourth-block-table-head-description">
+                                {t.devis_page.table.head.description}
+                            </td>
+                            <td className="devis__container-section-fourth-block-table-head-qty">
+                                {t.devis_page.table.head.quantity}
+                            </td>
+                            <td className="devis__container-section-fourth-block-table-head-unit">
+                                {t.devis_page.table.head.unit}
+                            </td>
+                            <td className="devis__container-section-fourth-block-table-head-unitPrice">
+                                {t.devis_page.table.head.unit_price}
+                            </td>
+                            <td className="devis__container-section-fourth-block-table-head-tva">
+                                {t.devis_page.table.head.total.tva}
+                            </td>
+                            <td className="devis__container-section-fourth-block-table-head-total-tva">
+                                {t.devis_page.table.head.total.ttva}
+                            </td>
+                            <td className="devis__container-section-fourth-block-table-head-total">
+                                {t.devis_page.table.head.total.total}
+                            </td>
                             </thead>
-                            <tbody className="devis__container-section-fourth-block-table-body">
-                            {[...Array(noOfRows)].map((elementInArray, index) => {
-                                const quantityLine = "quantity "+(index)+" :";
-                                const priceLine = "price "+(index)+" :";
-                                const tvaLine = "tva "+(index)+" :";
-
-                                    return (
-                                        <Item key={index}/>
-                                    );
-                                })}
+                            <tbody>
+                                {data.map((row, index) => (
+                                    <tr key={row.id} className="devis__container-section-fourth-block-table-body-line">
+                                        <td className="devis__container-section-fourth-block-table-body-line-description">
+                                            <textarea
+                                                className="devis__container-section-fourth-block-table-body-line-description-input"
+                                                type="text"
+                                                value={row.description}
+                                                onChange={(event) => updateRow(index, 'description', event.target.value)}
+                                            ></textarea>
+                                        </td>
+                                        <td className="devis__container-section-fourth-block-table-body-line-qty">
+                                            <input
+                                                className="devis__container-section-fourth-block-table-body-line-qty-input"
+                                                type="number"
+                                                value={row.quantity}
+                                                onChange={(event) => updateRow(index, 'quantity', event.target.value)}
+                                            />
+                                        </td>
+                                        <td className="devis__container-section-fourth-block-table-body-line-unit">
+                                            <input
+                                                className="devis__container-section-fourth-block-table-body-line-unit-input"
+                                                type="text"
+                                                value={row.unit}
+                                                onChange={(event) => updateRow(index, 'unit', event.target.value)}
+                                            />
+                                        </td>
+                                        <td className="devis__container-section-fourth-block-table-body-line-unitPrice">
+                                            <input
+                                                className="devis__container-section-fourth-block-table-body-line-unitPrice-input"
+                                                type="number"
+                                                value={row.price}
+                                                onChange={(event) => updateRow(index, 'price', event.target.value)}
+                                            />
+                                        </td>
+                                        <td className="devis__container-section-fourth-block-table-body-line-tva">
+                                            <select
+                                                className="devis__container-section-fourth-block-table-body-line-tva-value"
+                                                onChange={(event) => updateRow(index, 'tva', event.target.value)}
+                                            >
+                                                <option defaultValue={row.tva} disabled>{t.devis_page.table.line.tva.unit}</option>
+                                                <option value={t.devis_page.table.line.tva.value.one}>
+                                                    {t.devis_page.table.line.tva.value.one}
+                                                    {t.devis_page.table.line.tva.unit}
+                                                </option>
+                                                <option value={t.devis_page.table.line.tva.value.two}>
+                                                    {t.devis_page.table.line.tva.value.two}
+                                                    {t.devis_page.table.line.tva.unit}
+                                                </option>
+                                                <option value={t.devis_page.table.line.tva.value.three}>
+                                                    {t.devis_page.table.line.tva.value.three}
+                                                    {t.devis_page.table.line.tva.unit}
+                                                </option>
+                                                <option value={t.devis_page.table.line.tva.value.four}>
+                                                    {t.devis_page.table.line.tva.value.four}
+                                                    {t.devis_page.table.line.tva.unit}
+                                                </option>
+                                            </select>
+                                        </td>
+                                        <td className="devis__container-section-fourth-block-table-body-line-total-tva">
+                                            <input
+                                                className="devis__container-section-fourth-block-table-body-line-total-tva-input"
+                                                type="number"
+                                                readOnly="readonly"
+                                                value={row.totalDF=((row.quantity * row.price) * (1 + row.tva / 100) - (row.quantity * row.price)).toFixed(2)}
+                                                onChange={(event) => updateRow(index, 'totalDF', event.target.value)}
+                                            />
+                                        </td>
+                                        <td className="devis__container-section-fourth-block-table-body-line-total">
+                                            <input
+                                                className="devis__container-section-fourth-block-table-body-line-total-input"
+                                                type="number"
+                                                readOnly="readonly"
+                                                value={row.total=((row.quantity * row.price) * (1 + row.tva / 100)).toFixed(2)}
+                                                onChange={(event) => updateRow(index, 'total', event.target.value)}
+                                            />
+                                        </td>
+                                    </tr>
+                                ))}
                             </tbody>
                         </table>
+                        <button 
+                            className="devis__container-section-fourth-block-addButton"
+                            onClick={addRow}
+                        >
+                            {t.ui.add}
+                        </button>
+                        <button className="devis__container-section-fourth-block-delButton" onClick={deleteRow}>{t.ui.del}</button>
+                        <button
+                            onClick={handlePrint}
+                            className="devis__container-section-fourth-block-print-button"
+                        >
+                            {t.ui.print}
+                        </button>
                     </div>
-                    {/*  Quatrieme Bloc BIS */}
                     <div className="devis__container-section-fourthBIS-block">
                         <table className="devis__container-section-fourthBIS-block-table">
                             <thead className="devis__container-section-fourthBIS-block-table-head">
-                                <td className="devis__container-section-fourthBIS-block-table-head-tva">
-                                    <p className="devis__container-section-fourthBIS-block-table-head-tva-text">
-                                        {t.devis_page.result.total.ttva}
-                                    </p>
-                                    <input className="devis__container-section-fourthBIS-block-table-head-tva-value" type="text" readOnly="readonly"/>
-                                </td>
                                 <td className="devis__container-section-fourthBIS-block-table-head-totalDF">
                                     <p className="devis__container-section-fourthBIS-block-table-head-totalDF-text">
                                         {t.devis_page.result.total.totalht}
                                     </p>
-                                    <input className="devis__container-section-fourthBIS-block-table-head-totalDF-value" type="number" readOnly="readonly"/>
+                                    <input
+                                        className="devis__container-section-fourthBIS-block-table-head-totalDF-value"
+                                        type="number"
+                                        readOnly="readonly"
+                                        value={(total - totalDF).toFixed(2)}
+                                    />
+                                </td>
+                                <td className="devis__container-section-fourthBIS-block-table-head-tva">
+                                    <p className="devis__container-section-fourthBIS-block-table-head-tva-text">
+                                        {t.devis_page.result.total.ttva}
+                                    </p>
+                                    <input
+                                        className="devis__container-section-fourthBIS-block-table-head-tva-value"
+                                        type="text"
+                                        readOnly="readonly"
+                                        value={totalDF.toFixed(2)}
+                                    />
                                 </td>
                                 <td className="devis__container-section-fourthBIS-block-table-head-total">
                                     <p className="devis__container-section-fourthBIS-block-table-head-total-text">
                                         {t.devis_page.result.total.total}
                                     </p>
-                                    <input className="devis__container-section-fourthBIS-block-table-head-total-value" type="number" readOnly="readonly"/>
+                                    <input
+                                        className="devis__container-section-fourthBIS-block-table-head-total-value"
+                                        type="number"
+                                        readOnly="readonly"
+                                        value={total.toFixed(2)}
+                                    />
                                 </td>
                             </thead>
                         </table>
