@@ -422,7 +422,9 @@
                             color: $white;
                         }
                         &-img{
-                            padding-left: -50px;
+                            max-width: 200px;
+                            max-height: 130px;
+                            margin-top: 20px;
                             color: $white;
                         }
                     }
