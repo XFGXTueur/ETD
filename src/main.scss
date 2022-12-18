@@ -4,11 +4,10 @@
 @import './Utils/animations.scss';
 @import './Utils/variables.scss';
 @import './Loader/loader.scss';
+@import './Utils/template.scss';
 
 // Import des scss des pages
 @import './Pages/Home/home.scss';
-@import './Pages/Devis/devis.scss';
-@import './Pages/Facture/facture.scss';
 
 
 // Application du style par défaut
@@ -43,131 +42,40 @@ body {
         }
     }
 }
-
+.devis{
+    @include template;
+}
 .devis__container-section-fourth-block-delButton{
-    position: absolute;
-    z-index: 0;
-    width: 120px;
-    height: 50px;
-    margin-top: 30px;
-    margin-left: 15px;
-    background-color: $red;
-    color: $white;
-    font-weight: bold;
-    border: none;
-    font-size: large;
-    border-radius: 10px;
-    transition: all 0.1s ease-in-out;
-    cursor: url(delete_1.png), not-allowed;
-    &:hover{
-        box-shadow: -1px 2.5px 2px $light-gray;
-        transform: translateY(-1.5px);
-    }
-    &:active{
-        box-shadow: 0 0 6px $black;
-        transform: translateY(0px);
-    }
+    @include delButton;
 }
 .devis__container-section-fourth-block-addButton{
-    position: absolute;
-    z-index: 0;
-    width: 120px;
-    height: 50px;
-    margin-left: 150px;
-    margin-top: 30px;
-    background-color: $green;
-    color: white;
-    font-weight: bold;
-    border: none;
-    font-size: large;
-    border-radius: 10px;
-    transition: all 0.1s ease-in-out;
-    cursor: url(add_0.png), cell;
-    &:hover{
-        box-shadow: -1px 2.5px 2px $light-gray;
-        transform: translateY(-1.5px);
-    }
-    &:active{
-        box-shadow: 0 0 6px $black;
-        transform: translateY(0px);
-    }
+    @include addButton;
 }
 .devis__container-section-fourth-block-print-button{
-    position: absolute;
-    z-index: 0;
-    width: 120px;
-    height: 50px;
-    margin-top: 30px;
-    margin-left: 285px;
-    background-color: $blue;
-    color: $black;
-    font-weight: bold;
-    border: none;
-    font-size: large;
-    border-radius: 10px;
-    transition: all 0.1s ease-in-out;
-    cursor: url(printPDF.png), crosshair;
-    &:hover{
-        box-shadow: -1px 2.5px 2px $light-gray;
-        transform: translateY(-1.5px);
-    }
-    &:active{
-        box-shadow: 0 0 6px $black;
-        transform: translateY(0px);
-    }
+    @include print-button;
+}
+.devis__container-section-first-block-infos-uuid-input-button-plus{
+    @include plus-button;
+}
+.devis__container-section-first-block-infos-uuid-input-button-minus{
+    @include minus-button;
 }
 
-.devis__container-section-first-block-infos-devis-input-button-plus{
-    position: absolute;
-    width: 25px;
-    height: 25px;
-    border: none;
-    border-radius: 3px;
-    background-color: $green;
-    margin-left: 50px;
-    transition: all 0.1s ease-in-out;
-    &-img{
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        height: 100%;
-        cursor: pointer;
-        transition: all 0.1s ease-in-out;
-        &:hover{
-            filter: invert(100%);
-        }
-    }
-    &:hover{
-        box-shadow: 0px 0px 6px $white;
-    }
-    &:active{
-        box-shadow: 0px 0px 6px $black;
-    }
+.facture{
+    @include template;
 }
-.devis__container-section-first-block-infos-devis-input-button-minus{
-    position: absolute;
-    width: 25px;
-    height: 25px;
-    border: none;
-    border-radius: 3px;
-    background-color: $red;
-    margin-left: 10px;
-    transition: all 0.1s ease-in-out;
-    &-img{
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        height: 100%;
-        cursor: pointer;
-        transition: all 0.1s ease-in-out;
-        &:hover{
-            filter: invert(100%);
-        }
-    }
-    &:hover{
-        box-shadow: 0px 0px 6px $white;
-    }
-    &:active{
-        box-shadow: 0px 0px 6px $black;
-    }
+.facture__container-section-fourth-block-delButton{
+    @include delButton;
+}
+.facture__container-section-fourth-block-addButton{
+    @include addButton;
+}
+.facture__container-section-fourth-block-print-button{
+    @include print-button;
+}
+.facture__container-section-first-block-infos-uuid-input-button-plus{
+    @include plus-button;
+}
+.facture__container-section-first-block-infos-uuid-input-button-minus{
+    @include minus-button;
 }

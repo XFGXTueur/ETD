@@ -8,11 +8,10 @@
     @import './Utils/animations.scss';
     @import './Utils/variables.scss';
     @import './Loader/loader.scss';
+    @import './Utils/template.scss';
 
     // Import des scss des pages
     @import './Pages/Home/home.scss';
-    @import './Pages/Devis/devis.scss';
-    @import './Pages/Facture/facture.scss';
 
 
     // Application du style par défaut
@@ -47,6 +46,9 @@
             }
         }
     }
+    .devis{
+        @include template;
+    }
     .devis__container-section-fourth-block-addButton{
         display: none;
     }
@@ -56,10 +58,29 @@
     .devis__container-section-fourth-block-print-button{
         display: none;
     }
-    .devis__container-section-first-block-infos-devis-input-button-plus{
+    .devis__container-section-first-block-infos-uuid-input-button-plus{
         display: none;
     }
-    .devis__container-section-first-block-infos-devis-input-button-minus{
+    .devis__container-section-first-block-infos-uuid-input-button-minus{
+        display: none;
+    }
+    
+    .facture{
+        @include template;
+    }
+    .facture__container-section-fourth-block-addButton{
+        display: none;
+    }
+    .facture__container-section-fourth-block-delButton{
+        display: none;
+    }
+    .facture__container-section-fourth-block-print-button{
+        display: none;
+    }
+    .facture__container-section-first-block-infos-uuid-input-button-plus{
+        display: none;
+    }
+    .facture__container-section-first-block-infos-uuid-input-button-minus{
         display: none;
     }
 }

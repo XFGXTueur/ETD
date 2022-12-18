@@ -30,3 +30,135 @@
         color: $gray;
     }
 } 
+
+@mixin plus-button {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    border: none;
+    border-radius: 3px;
+    background-color: $green;
+    margin-left: 50px;
+    transition: all 0.1s ease-in-out;
+    &-img{
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+        transition: all 0.1s ease-in-out;
+        &:hover{
+            filter: invert(100%);
+        }
+    }
+    &:hover{
+        box-shadow: 0px 0px 6px $white;
+    }
+    &:active{
+        box-shadow: 0px 0px 6px $black;
+    }
+}
+
+@mixin minus-button {
+
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    border: none;
+    border-radius: 3px;
+    background-color: $red;
+    margin-left: 10px;
+    transition: all 0.1s ease-in-out;
+    &-img{
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+        transition: all 0.1s ease-in-out;
+        &:hover{
+            filter: invert(100%);
+        }
+    }
+    &:hover{
+        box-shadow: 0px 0px 6px $white;
+    }
+    &:active{
+        box-shadow: 0px 0px 6px $black;
+    }
+}
+
+@mixin print-button {
+    position: absolute;
+    z-index: 0;
+    width: 120px;
+    height: 50px;
+    margin-top: 30px;
+    margin-left: 285px;
+    background-color: $blue;
+    color: $black;
+    font-weight: bold;
+    border: none;
+    font-size: large;
+    border-radius: 10px;
+    transition: all 0.1s ease-in-out;
+    cursor: url(printPDF.png), crosshair;
+    &:hover{
+        box-shadow: -1px 2.5px 2px $light-gray;
+        transform: translateY(-1.5px);
+    }
+    &:active{
+        box-shadow: 0 0 6px $black;
+        transform: translateY(0px);
+    }
+}
+
+@mixin delButton {
+    position: absolute;
+    z-index: 0;
+    width: 120px;
+    height: 50px;
+    margin-top: 30px;
+    margin-left: 15px;
+    background-color: $red;
+    color: $white;
+    font-weight: bold;
+    border: none;
+    font-size: large;
+    border-radius: 10px;
+    transition: all 0.1s ease-in-out;
+    cursor: url(delete_1.png), not-allowed;
+    &:hover{
+        box-shadow: -1px 2.5px 2px $light-gray;
+        transform: translateY(-1.5px);
+    }
+    &:active{
+        box-shadow: 0 0 6px $black;
+        transform: translateY(0px);
+    }
+}
+
+@mixin addButton {
+    position: absolute;
+    z-index: 0;
+    width: 120px;
+    height: 50px;
+    margin-left: 150px;
+    margin-top: 30px;
+    background-color: $green;
+    color: white;
+    font-weight: bold;
+    border: none;
+    font-size: large;
+    border-radius: 10px;
+    transition: all 0.1s ease-in-out;
+    cursor: url(add_0.png), cell;
+    &:hover{
+        box-shadow: -1px 2.5px 2px $light-gray;
+        transform: translateY(-1.5px);
+    }
+    &:active{
+        box-shadow: 0 0 6px $black;
+        transform: translateY(0px);
+    }
+}
