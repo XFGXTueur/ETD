@@ -1,41 +1,118 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useReactToPrint } from "react-to-print";
 import FR from '../../locales/fr/translation.json';
-
-import Item from "./Item";
 
 const t = FR;
 
 const Facture = () => {
 
-    const [noOfRows, setNoOfRows] = useState(1);
+//To print the page
     const componentRef = useRef();
     const handlePrint = useReactToPrint({
         content: () => componentRef.current,
     });
 
+//To save the data in local storage
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        const storedData = localStorage.getItem('data');
+        if (storedData) {
+            setData(JSON.parse(storedData));
+        }
+    }, []);
+
+    useEffect(() => {
+        localStorage.setItem('data', JSON.stringify(data));
+    }, [data]);
+
+//To add a new row
+    const addRow = () => {
+        setData([...data, {
+            id: data.length + 1,
+            description: '',
+            quantity: '',
+            unit: '',
+            price: '',
+            tva: '',
+            totalDF: '',
+            total: ''
+        }]);
+    };
+
+    const updateRow = (index, key, value) => {
+        const newData = [...data];
+        newData[index][key] = value;
+        setData(newData);
+    };
+
+    useEffect(() => {
+        if (data.length === 0) {
+            addRow();
+        }
+    }, [data]);
+
+//delete last row created
+    const deleteRow = () => {
+        const newData = [...data];
+        newData.pop();
+        setData(newData);
+    };
+
+//make total of all 'total' values
+    const total = data.reduce((acc, item) => {
+        return acc + parseFloat(item.total);
+    }, 0);
+
+    const totalDF = data.reduce((acc, item) => {
+        return acc + parseFloat(item.totalDF);
+    }, 0);
+
+//To set the invoice number
+    const currentYear = new Date().getFullYear();
+    const currentMonth = new Date().getMonth() + 1;
+    const currentDateString = currentYear + "" + currentMonth + '0000';
+
+    const [invoiceNumber, setInvoiceNumber] = useState(currentDateString);
+
+    useEffect(() => {
+        const previousInvoiceNumber = localStorage.getItem('invoiceNumber');
+        if (previousInvoiceNumber) {
+            setInvoiceNumber(previousInvoiceNumber);
+        }
+    }, []);
+
+    const IncrementInvoiceNumber = () => {
+        const newInvoiceNumber = Number(invoiceNumber) + 1;
+        setInvoiceNumber(newInvoiceNumber);
+        localStorage.setItem('invoiceNumber', newInvoiceNumber.toString());
+    };
+
+    const DecrementInvoiceNumber = () => {
+        const newInvoiceNumber = Number(invoiceNumber) - 1;
+        setInvoiceNumber(newInvoiceNumber);
+        localStorage.setItem('invoiceNumber', newInvoiceNumber.toString());
+    };
+
+//change dynamically the invoiceNumber value
+    const changeInvoiceNumber = (event) => {
+        setInvoiceNumber(event.target.value);
+        localStorage.setItem('invoiceNumber', event.target.value);
+    };
+
+//To set the title of the page
+    const [title, setTitle] = useState("Facture");
+
+    useEffect(() => {
+        document.title = title + " - " + invoiceNumber;
+    }, [invoiceNumber, title]);
+
+    const changeTitle = (event) => {
+        setTitle(event.target.value);
+    };
+
     return (
         <div className="facture">
-            <button
-                onClick={handlePrint}
-                className="facture__print-button"
-            >
-                {t.ui.print}
-            </button>
-            <button
-                type="button"
-                className="facture__addButton"
-                onClick={() => setNoOfRows(noOfRows + 1)}
-            >
-                {t.ui.add}
-            </button>
-            <button
-                type="button"
-                className="facture__delButton"
-                onClick={() => setNoOfRows(noOfRows - 1)}
-            >
-                {t.ui.del}
-            </button>
             <div className="facture__container" ref={componentRef}>
                 {/*  Premier Bloc  */}
                 <a href="/" className="facture__container-link" alt="home">
@@ -54,7 +131,30 @@ const Facture = () => {
                                 <input
                                     className="facture__container-section-first-block-infos-facture-input"
                                     type="text"
+                                    id="factureNumber"
+                                    onChange={changeInvoiceNumber}
+                                    value={invoiceNumber}
                                 />
+                                <button
+                                    onClick={IncrementInvoiceNumber}
+                                    className="facture__container-section-first-block-infos-facture-input-button-plus"
+                                >
+                                    <img
+                                    className="facture__container-section-first-block-infos-facture-input-button-plus-img"
+                                        src="./plus.svg"
+                                        alt="plus"
+                                    />
+                                </button>
+                                <button
+                                    className="facture__container-section-first-block-infos-facture-input-button-minus"
+                                    onClick={DecrementInvoiceNumber}
+                                >
+                                    <img
+                                        className="facture__container-section-first-block-infos-facture-input-button-minus-img"
+                                        src="./minus.svg"
+                                        alt="minus"
+                                    />
+                                </button>
                             </div>
                             <div className="facture__container-section-first-block-infos-date">
                                 <p className="facture__container-section-first-block-infos-date-text">{t.facture_page.date.date}</p>
@@ -103,71 +203,169 @@ const Facture = () => {
                     </div>
                     {/*  Troisieme Bloc  */}
                     <div className="facture__container-section-third-block">
-                        <span
+                        <textarea
                             className="facture__container-section-third-block-title"
-                            role="textbox"
-                            contentEditable
-                            suppressContentEditableWarning={true}
-                        >
-                            {t.facture_page.title}
-                        </span>
+                            id="title"
+                            onChange={changeTitle}
+                            value={title}
+                        ></textarea>
                     </div>
                     {/*  Quatrieme Bloc  */}
                     <div className="facture__container-section-fourth-block">
                         <table className="facture__container-section-fourth-block-table">
                             <thead className="facture__container-section-fourth-block-table-head">
-                                <td className="facture__container-section-fourth-block-table-head-description">
-                                    {t.facture_page.table.head.description}
-                                </td>
-                                <td className="facture__container-section-fourth-block-table-head-qty">
-                                    {t.facture_page.table.head.quantity}
-                                </td>
-                                <td className="facture__container-section-fourth-block-table-head-unit">
-                                    {t.facture_page.table.head.unit}
-                                </td>
-                                <td className="facture__container-section-fourth-block-table-head-unitPrice">
-                                    {t.facture_page.table.head.unit_price}
-                                </td>
-                                <td className="facture__container-section-fourth-block-table-head-tva">
-                                    {t.facture_page.table.head.total.tva}
-                                </td>
-                                <td className="facture__container-section-fourth-block-table-head-total-tva">
-                                    {t.facture_page.table.head.total.ttva}
-                                </td>
-                                <td className="facture__container-section-fourth-block-table-head-total">
-                                    {t.facture_page.table.head.total.total}
-                                </td>
+                            <td className="facture__container-section-fourth-block-table-head-description">
+                                {t.facture_page.table.head.description}
+                            </td>
+                            <td className="facture__container-section-fourth-block-table-head-qty">
+                                {t.facture_page.table.head.quantity}
+                            </td>
+                            <td className="facture__container-section-fourth-block-table-head-unit">
+                                {t.facture_page.table.head.unit}
+                            </td>
+                            <td className="facture__container-section-fourth-block-table-head-unitPrice">
+                                {t.facture_page.table.head.unit_price}
+                            </td>
+                            <td className="facture__container-section-fourth-block-table-head-tva">
+                                {t.facture_page.table.head.total.tva}
+                            </td>
+                            <td className="facture__container-section-fourth-block-table-head-total-tva">
+                                {t.facture_page.table.head.total.ttva}
+                            </td>
+                            <td className="facture__container-section-fourth-block-table-head-total">
+                                {t.facture_page.table.head.total.total}
+                            </td>
                             </thead>
-                            <tbody className="facture__container-section-fourth-block-table-body">
-                            {[...Array(noOfRows)].map((elementInArray, index) => {
-                                    return (
-                                        <Item key={16}/>
-                                    );
-                                })}
+                            <tbody>
+                                {data.map((row, index) => (
+                                    <tr key={row.id} className="facture__container-section-fourth-block-table-body-line">
+                                        <td className="facture__container-section-fourth-block-table-body-line-description">
+                                            <textarea
+                                                className="facture__container-section-fourth-block-table-body-line-description-input"
+                                                type="text"
+                                                value={row.description}
+                                                onChange={(event) => updateRow(index, 'description', event.target.value)}
+                                            ></textarea>
+                                        </td>
+                                        <td className="facture__container-section-fourth-block-table-body-line-qty">
+                                            <input
+                                                className="facture__container-section-fourth-block-table-body-line-qty-input"
+                                                type="number"
+                                                value={row.quantity}
+                                                onChange={(event) => updateRow(index, 'quantity', event.target.value)}
+                                            />
+                                        </td>
+                                        <td className="facture__container-section-fourth-block-table-body-line-unit">
+                                            <input
+                                                className="facture__container-section-fourth-block-table-body-line-unit-input"
+                                                type="text"
+                                                value={row.unit}
+                                                onChange={(event) => updateRow(index, 'unit', event.target.value)}
+                                            />
+                                        </td>
+                                        <td className="facture__container-section-fourth-block-table-body-line-unitPrice">
+                                            <input
+                                                className="facture__container-section-fourth-block-table-body-line-unitPrice-input"
+                                                type="number"
+                                                value={row.price}
+                                                onChange={(event) => updateRow(index, 'price', event.target.value)}
+                                            />
+                                        </td>
+                                        <td className="facture__container-section-fourth-block-table-body-line-tva">
+                                            <select
+                                                className="facture__container-section-fourth-block-table-body-line-tva-value"
+                                                onChange={(event) => updateRow(index, 'tva', event.target.value)}
+                                            >
+                                                <option defaultValue={row.tva} disabled>{t.facture_page.table.line.tva.unit}</option>
+                                                <option value={t.facture_page.table.line.tva.value.one}>
+                                                    {t.facture_page.table.line.tva.value.one}
+                                                    {t.facture_page.table.line.tva.unit}
+                                                </option>
+                                                <option value={t.facture_page.table.line.tva.value.two}>
+                                                    {t.facture_page.table.line.tva.value.two}
+                                                    {t.facture_page.table.line.tva.unit}
+                                                </option>
+                                                <option value={t.facture_page.table.line.tva.value.three}>
+                                                    {t.facture_page.table.line.tva.value.three}
+                                                    {t.facture_page.table.line.tva.unit}
+                                                </option>
+                                                <option value={t.facture_page.table.line.tva.value.four}>
+                                                    {t.facture_page.table.line.tva.value.four}
+                                                    {t.facture_page.table.line.tva.unit}
+                                                </option>
+                                            </select>
+                                        </td>
+                                        <td className="facture__container-section-fourth-block-table-body-line-total-tva">
+                                            <input
+                                                className="facture__container-section-fourth-block-table-body-line-total-tva-input"
+                                                type="number"
+                                                readOnly="readonly"
+                                                value={row.totalDF=((row.quantity * row.price) * (1 + row.tva / 100) - (row.quantity * row.price)).toFixed(2)}
+                                                onChange={(event) => updateRow(index, 'totalDF', event.target.value)}
+                                            />
+                                        </td>
+                                        <td className="facture__container-section-fourth-block-table-body-line-total">
+                                            <input
+                                                className="facture__container-section-fourth-block-table-body-line-total-input"
+                                                type="number"
+                                                readOnly="readonly"
+                                                value={row.total=((row.quantity * row.price) * (1 + row.tva / 100)).toFixed(2)}
+                                                onChange={(event) => updateRow(index, 'total', event.target.value)}
+                                            />
+                                        </td>
+                                    </tr>
+                                ))}
                             </tbody>
                         </table>
+                        <button 
+                            className="facture__container-section-fourth-block-addButton"
+                            onClick={addRow}
+                        >
+                            {t.ui.add}
+                        </button>
+                        <button className="facture__container-section-fourth-block-delButton" onClick={deleteRow}>{t.ui.del}</button>
+                        <button
+                            onClick={handlePrint}
+                            className="facture__container-section-fourth-block-print-button"
+                        >
+                            {t.ui.print}
+                        </button>
                     </div>
-                    {/*  Quatrieme Bloc BIS */}
                     <div className="facture__container-section-fourthBIS-block">
                         <table className="facture__container-section-fourthBIS-block-table">
                             <thead className="facture__container-section-fourthBIS-block-table-head">
-                                <td className="facture__container-section-fourthBIS-block-table-head-tva">
-                                    <p className="facture__container-section-fourthBIS-block-table-head-tva-text">
-                                        {t.facture_page.result.total.ttva}
-                                    </p>
-                                    <input className="facture__container-section-fourthBIS-block-table-head-tva-value" type="text" readOnly="readonly"/>
-                                </td>
                                 <td className="facture__container-section-fourthBIS-block-table-head-totalDF">
                                     <p className="facture__container-section-fourthBIS-block-table-head-totalDF-text">
                                         {t.facture_page.result.total.totalht}
                                     </p>
-                                    <input className="facture__container-section-fourthBIS-block-table-head-totalDF-value" type="number" readOnly="readonly"/>
+                                    <input
+                                        className="facture__container-section-fourthBIS-block-table-head-totalDF-value"
+                                        type="number"
+                                        readOnly="readonly"
+                                        value={(total - totalDF).toFixed(2)}
+                                    />
+                                </td>
+                                <td className="facture__container-section-fourthBIS-block-table-head-tva">
+                                    <p className="facture__container-section-fourthBIS-block-table-head-tva-text">
+                                        {t.facture_page.result.total.ttva}
+                                    </p>
+                                    <input
+                                        className="facture__container-section-fourthBIS-block-table-head-tva-value"
+                                        type="text"
+                                        readOnly="readonly"
+                                        value={totalDF.toFixed(2)}
+                                    />
                                 </td>
                                 <td className="facture__container-section-fourthBIS-block-table-head-total">
                                     <p className="facture__container-section-fourthBIS-block-table-head-total-text">
                                         {t.facture_page.result.total.total}
                                     </p>
-                                    <input className="facture__container-section-fourthBIS-block-table-head-total-value" type="number" readOnly="readonly"/>
+                                    <input
+                                        className="facture__container-section-fourthBIS-block-table-head-total-value"
+                                        type="number"
+                                        readOnly="readonly"
+                                        value={total.toFixed(2)}
+                                    />
                                 </td>
                             </thead>
                         </table>
@@ -205,7 +403,7 @@ const Facture = () => {
                                 <img
                                     className="facture__container-section-sixth-block-sign-me-img"
                                     alt="signature"
-                                    href=""
+                                    src="./signature.png"
                                 ></img>
                             </div>
                         </div>
