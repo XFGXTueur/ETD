@@ -2,30 +2,17 @@ import React, { useState, useRef, useEffect } from "react";
 import { useReactToPrint } from "react-to-print";
 import FR from '../../locales/fr/translation.json';
 
-
 const t = FR;
 
 const Devis = () => {
 
-    //To set the title of the page
-    const [title, setTitle] = useState("Devis");
-
-    useEffect(() => {
-        let devisNumber = document.getElementById("devisNumber").value;
-        document.title = title + " - " + devisNumber;
-    }, [title]);
-
-    const changeTitle = (event) => {
-        setTitle(event.target.value);
-    };
-
-    //To print the page
+//To print the page
     const componentRef = useRef();
     const handlePrint = useReactToPrint({
         content: () => componentRef.current,
     });
 
-    //To save the data in local storage
+//To save the data in local storage
     const [data, setData] = useState([]);
 
     useEffect(() => {
@@ -39,7 +26,7 @@ const Devis = () => {
         localStorage.setItem('data', JSON.stringify(data));
     }, [data]);
 
-    //To add a new row
+//To add a new row
     const addRow = () => {
         setData([...data, {
             id: data.length + 1,
@@ -65,14 +52,14 @@ const Devis = () => {
         }
     }, [data]);
 
-    //delete last row created
+//delete last row created
     const deleteRow = () => {
         const newData = [...data];
         newData.pop();
         setData(newData);
     };
 
-    //make total of all 'total' values
+//make total of all 'total' values
     const total = data.reduce((acc, item) => {
         return acc + parseFloat(item.total);
     }, 0);
@@ -80,6 +67,49 @@ const Devis = () => {
     const totalDF = data.reduce((acc, item) => {
         return acc + parseFloat(item.totalDF);
     }, 0);
+
+//To set the invoice number
+    const currentYear = new Date().getFullYear();
+    const currentMonth = new Date().getMonth() + 1;
+    const currentDateString = currentYear + "" + currentMonth + '0000';
+
+    const [invoiceNumber, setInvoiceNumber] = useState(currentDateString);
+
+    useEffect(() => {
+        const previousInvoiceNumber = localStorage.getItem('invoiceNumber');
+        if (previousInvoiceNumber) {
+            setInvoiceNumber(previousInvoiceNumber);
+        }
+    }, []);
+
+    const IncrementInvoiceNumber = () => {
+        const newInvoiceNumber = Number(invoiceNumber) + 1;
+        setInvoiceNumber(newInvoiceNumber);
+        localStorage.setItem('invoiceNumber', newInvoiceNumber.toString());
+    };
+
+    const DecrementInvoiceNumber = () => {
+        const newInvoiceNumber = Number(invoiceNumber) - 1;
+        setInvoiceNumber(newInvoiceNumber);
+        localStorage.setItem('invoiceNumber', newInvoiceNumber.toString());
+    };
+
+//change dynamically the invoiceNumber value
+    const changeInvoiceNumber = (event) => {
+        setInvoiceNumber(event.target.value);
+        localStorage.setItem('invoiceNumber', event.target.value);
+    };
+
+//To set the title of the page
+    const [title, setTitle] = useState("Devis");
+
+    useEffect(() => {
+        document.title = title + " - " + invoiceNumber;
+    }, [invoiceNumber, title]);
+
+    const changeTitle = (event) => {
+        setTitle(event.target.value);
+    };
 
     return (
         <div className="devis">
@@ -102,8 +132,29 @@ const Devis = () => {
                                     className="devis__container-section-first-block-infos-devis-input"
                                     type="text"
                                     id="devisNumber"
-                                    defaultValue=""
+                                    onChange={changeInvoiceNumber}
+                                    value={invoiceNumber}
                                 />
+                                <button
+                                    onClick={IncrementInvoiceNumber}
+                                    className="devis__container-section-first-block-infos-devis-input-button-plus"
+                                >
+                                    <img
+                                    className="devis__container-section-first-block-infos-devis-input-button-plus-img"
+                                        src="./plus.svg"
+                                        alt="plus"
+                                    />
+                                </button>
+                                <button
+                                    className="devis__container-section-first-block-infos-devis-input-button-minus"
+                                    onClick={DecrementInvoiceNumber}
+                                >
+                                    <img
+                                        className="devis__container-section-first-block-infos-devis-input-button-minus-img"
+                                        src="./minus.svg"
+                                        alt="minus"
+                                    />
+                                </button>
                             </div>
                             <div className="devis__container-section-first-block-infos-date">
                                 <p className="devis__container-section-first-block-infos-date-text">{t.devis_page.date.date}</p>
