@@ -126,10 +126,10 @@ const Devis = () => {
                 <div className="devis__container-section">
                     <div className="devis__container-section-first-block">
                         <div className="devis__container-section-first-block-infos">
-                            <div className="devis__container-section-first-block-infos-devis">
-                                <p className="devis__container-section-first-block-infos-devis-text">{t.devis_page.date.title}</p>
+                            <div className="devis__container-section-first-block-infos-uuid">
+                                <p className="devis__container-section-first-block-infos-uuid-text">{t.devis_page.date.title}</p>
                                 <input
-                                    className="devis__container-section-first-block-infos-devis-input"
+                                    className="devis__container-section-first-block-infos-uuid-input"
                                     type="text"
                                     id="devisNumber"
                                     onChange={changeInvoiceNumber}
@@ -137,20 +137,20 @@ const Devis = () => {
                                 />
                                 <button
                                     onClick={IncrementInvoiceNumber}
-                                    className="devis__container-section-first-block-infos-devis-input-button-plus"
+                                    className="devis__container-section-first-block-infos-uuid-input-button-plus"
                                 >
                                     <img
-                                    className="devis__container-section-first-block-infos-devis-input-button-plus-img"
+                                    className="devis__container-section-first-block-infos-uuid-input-button-plus-img"
                                         src="./plus.svg"
                                         alt="plus"
                                     />
                                 </button>
                                 <button
-                                    className="devis__container-section-first-block-infos-devis-input-button-minus"
+                                    className="devis__container-section-first-block-infos-uuid-input-button-minus"
                                     onClick={DecrementInvoiceNumber}
                                 >
                                     <img
-                                        className="devis__container-section-first-block-infos-devis-input-button-minus-img"
+                                        className="devis__container-section-first-block-infos-uuid-input-button-minus-img"
                                         src="./minus.svg"
                                         alt="minus"
                                     />

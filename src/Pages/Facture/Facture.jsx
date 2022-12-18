@@ -126,10 +126,10 @@ const Facture = () => {
                 <div className="facture__container-section">
                     <div className="facture__container-section-first-block">
                         <div className="facture__container-section-first-block-infos">
-                            <div className="facture__container-section-first-block-infos-facture">
-                                <p className="facture__container-section-first-block-infos-facture-text">{t.facture_page.date.title}</p>
+                            <div className="facture__container-section-first-block-infos-uuid">
+                                <p className="facture__container-section-first-block-infos-uuid-text">{t.facture_page.date.title}</p>
                                 <input
-                                    className="facture__container-section-first-block-infos-facture-input"
+                                    className="facture__container-section-first-block-infos-uuid-input"
                                     type="text"
                                     id="factureNumber"
                                     onChange={changeInvoiceNumber}
@@ -137,20 +137,20 @@ const Facture = () => {
                                 />
                                 <button
                                     onClick={IncrementInvoiceNumber}
-                                    className="facture__container-section-first-block-infos-facture-input-button-plus"
+                                    className="facture__container-section-first-block-infos-uuid-input-button-plus"
                                 >
                                     <img
-                                    className="facture__container-section-first-block-infos-facture-input-button-plus-img"
+                                    className="facture__container-section-first-block-infos-uuid-input-button-plus-img"
                                         src="./plus.svg"
                                         alt="plus"
                                     />
                                 </button>
                                 <button
-                                    className="facture__container-section-first-block-infos-facture-input-button-minus"
+                                    className="facture__container-section-first-block-infos-uuid-input-button-minus"
                                     onClick={DecrementInvoiceNumber}
                                 >
                                     <img
-                                        className="facture__container-section-first-block-infos-facture-input-button-minus-img"
+                                        className="facture__container-section-first-block-infos-uuid-input-button-minus-img"
                                         src="./minus.svg"
                                         alt="minus"
                                     />
